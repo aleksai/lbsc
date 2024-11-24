@@ -1,0 +1,95 @@
+included:
+  - ../../Shared
+  - ../../iOS
+
+excluded:
+
+opt_in_rules:
+  - closure_spacing
+  - closure_end_indentation
+  - collection_alignment
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - convenience_type
+  - discarded_notification_center_observer
+  - discouraged_assert
+  - discouraged_object_literal
+  - empty_collection_literal
+  - empty_count
+  - empty_string
+  - empty_xctest_method
+  - enum_case_associated_values_count
+  - explicit_init
+  - extension_access_modifier
+  - fallthrough
+  - fatal_error_message
+  - file_name_no_space
+  - first_where
+  - flatmap_over_map_reduce
+  - identical_operands
+  - joined_default_parameter
+  - last_where
+  - legacy_objc_type
+  - legacy_random
+  - literal_expression_end_indentation
+  - modifier_order
+  - multiline_arguments
+  - operator_usage_whitespace
+  - prefer_self_type_over_type_of_self
+  - prefer_zero_over_explicit_init
+  - redundant_type_annotation
+  - private_outlet
+  - sorted_first_last
+  - sorted_imports
+  - strong_iboutlet
+  - switch_case_on_newline
+  - trailing_closure
+  - unneeded_parentheses_in_closure_argument
+  - unowned_variable_capture
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+  - yoda_condition
+  
+disabled_rules:
+  - opening_brace
+  - for_where
+  
+analyzer_rules:
+  - unused_declaration
+  - unused_import
+
+identifier_name:
+  excluded:
+    - id
+    - to
+    - r
+    - g
+    - b
+    - a
+    - i
+    - x
+    - y
+    - z
+    - dx
+    - dy
+    - dz
+    - ok
+
+type_name:
+  excluded:
+    - ID
+    - DI
+    - UI
+
+nesting:
+  type_level:
+    warning: 2
+    error: 3
+
+line_length: 140
+file_length: 800
+force_cast: warning
+force_try: warning

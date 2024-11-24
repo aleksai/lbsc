@@ -1,18 +1,19 @@
-import UIKit
 import SceneKit
+import UIKit
 
 class SceneViewController: UIViewController {
     private let sceneView: SceneView
-    
+
     init(sceneView: SceneView) {
         self.sceneView = sceneView
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func loadView() {
         view = sceneView
     }

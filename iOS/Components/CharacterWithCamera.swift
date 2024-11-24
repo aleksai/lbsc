@@ -1,5 +1,5 @@
-import UIKit
 import SceneKit
+import UIKit
 
 class CharacterWithCamera: Component {
     private var boxNode: SCNNode!
@@ -65,8 +65,9 @@ class CharacterWithCamera: Component {
             )
 
             movementVector.z = -movementVector.z
-        case .ended, .cancelled, .failed:
+        case .cancelled, .ended, .failed:
             movementVector = SCNVector3Zero
+
             initialTouchPoint = nil
         default:
             break

@@ -6,17 +6,36 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5748DD672CF3E47D00589724 /* Art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 5748DD5C2CF3E47D00589724 /* Art.scnassets */; };
+		5748DD682CF3E47D00589724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5748DD5D2CF3E47D00589724 /* Assets.xcassets */; };
+		5748DD692CF3E47D00589724 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5748DD5F2CF3E47D00589724 /* LaunchScreen.storyboard */; };
+		5748DD6A2CF3E47D00589724 /* CharacterWithCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD562CF3E47D00589724 /* CharacterWithCamera.swift */; };
+		5748DD6B2CF3E47D00589724 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD572CF3E47D00589724 /* Floor.swift */; };
+		5748DD6C2CF3E47D00589724 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD592CF3E47D00589724 /* GameScene.swift */; };
+		5748DD6D2CF3E47D00589724 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD612CF3E47D00589724 /* Component.swift */; };
+		5748DD6E2CF3E47D00589724 /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD622CF3E47D00589724 /* SceneView.swift */; };
+		5748DD6F2CF3E47D00589724 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD632CF3E47D00589724 /* SceneViewController.swift */; };
+		5748DD702CF3E47D00589724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD652CF3E47D00589724 /* AppDelegate.swift */; };
+		5748DD782CF3E7DC00589724 /* swiftlint in Resources */ = {isa = PBXBuildFile; fileRef = 5748DD772CF3E7DC00589724 /* swiftlint */; };
+		5748DD792CF3E7DC00589724 /* swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 5748DD762CF3E7DC00589724 /* swiftformat */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		5748DD562CF3E47D00589724 /* CharacterWithCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterWithCamera.swift; sourceTree = "<group>"; };
+		5748DD572CF3E47D00589724 /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
+		5748DD592CF3E47D00589724 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		5748DD5C2CF3E47D00589724 /* Art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Art.scnassets; sourceTree = "<group>"; };
+		5748DD5D2CF3E47D00589724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5748DD5E2CF3E47D00589724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5748DD612CF3E47D00589724 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		5748DD622CF3E47D00589724 /* SceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
+		5748DD632CF3E47D00589724 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
+		5748DD652CF3E47D00589724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5748DD762CF3E7DC00589724 /* swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = swiftformat; sourceTree = "<group>"; };
+		5748DD772CF3E7DC00589724 /* swiftlint */ = {isa = PBXFileReference; lastKnownFileType = text; path = swiftlint; sourceTree = "<group>"; };
 		5773CAE92CF2128000A7F2A4 /* Low-budget Survival Crafter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Low-budget Survival Crafter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		5773CAEB2CF2128000A7F2A4 /* Low-budget Survival Crafter iOS */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Low-budget Survival Crafter iOS";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5773CAE62CF2128000A7F2A4 /* Frameworks */ = {
@@ -29,10 +48,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5748DD2D2CF3E3FC00589724 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5748DD752CF3E7CB00589724 /* Config */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		5748DD582CF3E47D00589724 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5748DD562CF3E47D00589724 /* CharacterWithCamera.swift */,
+				5748DD572CF3E47D00589724 /* Floor.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		5748DD5A2CF3E47D00589724 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				5748DD592CF3E47D00589724 /* GameScene.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		5748DD5B2CF3E47D00589724 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				5748DD5A2CF3E47D00589724 /* Game */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		5748DD602CF3E47D00589724 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5748DD5C2CF3E47D00589724 /* Art.scnassets */,
+				5748DD5D2CF3E47D00589724 /* Assets.xcassets */,
+				5748DD5F2CF3E47D00589724 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5748DD642CF3E47D00589724 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5748DD612CF3E47D00589724 /* Component.swift */,
+				5748DD622CF3E47D00589724 /* SceneView.swift */,
+				5748DD632CF3E47D00589724 /* SceneViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		5748DD662CF3E47D00589724 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5748DD582CF3E47D00589724 /* Components */,
+				5748DD5B2CF3E47D00589724 /* Features */,
+				5748DD602CF3E47D00589724 /* Resources */,
+				5748DD642CF3E47D00589724 /* UI */,
+				5748DD652CF3E47D00589724 /* AppDelegate.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		5748DD752CF3E7CB00589724 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				5748DD762CF3E7DC00589724 /* swiftformat */,
+				5748DD772CF3E7DC00589724 /* swiftlint */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		5773CADC2CF2127F00A7F2A4 = {
 			isa = PBXGroup;
 			children = (
-				5773CAEB2CF2128000A7F2A4 /* Low-budget Survival Crafter iOS */,
+				5748DD2D2CF3E3FC00589724 /* Shared */,
+				5748DD662CF3E47D00589724 /* iOS */,
 				5773CAEA2CF2128000A7F2A4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,6 +146,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5773CAFA2CF2128000A7F2A4 /* Build configuration list for PBXNativeTarget "Low-budget Survival Crafter iOS" */;
 			buildPhases = (
+				5748DD232CF3E28400589724 /* Format and Lint */,
 				5773CAE52CF2128000A7F2A4 /* Sources */,
 				5773CAE62CF2128000A7F2A4 /* Frameworks */,
 				5773CAE72CF2128000A7F2A4 /* Resources */,
@@ -59,9 +154,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				5773CAEB2CF2128000A7F2A4 /* Low-budget Survival Crafter iOS */,
 			);
 			name = "Low-budget Survival Crafter iOS";
 			packageProductDependencies = (
@@ -85,7 +177,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5773CAE02CF2127F00A7F2A4 /* Build configuration list for PBXProject "Low-budget Survival Crafter" */;
+			buildConfigurationList = 5773CAE02CF2127F00A7F2A4 /* Build configuration list for PBXProject "LowBudgetSurvivalCrafter" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -109,20 +201,66 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5748DD672CF3E47D00589724 /* Art.scnassets in Resources */,
+				5748DD682CF3E47D00589724 /* Assets.xcassets in Resources */,
+				5748DD782CF3E7DC00589724 /* swiftlint in Resources */,
+				5748DD792CF3E7DC00589724 /* swiftformat in Resources */,
+				5748DD692CF3E47D00589724 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5748DD232CF3E28400589724 /* Format and Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Format and Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nswiftformat . --config Shared/Config/swiftformat\nswiftlint --config Shared/Config/swiftlint\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5773CAE52CF2128000A7F2A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5748DD6A2CF3E47D00589724 /* CharacterWithCamera.swift in Sources */,
+				5748DD6B2CF3E47D00589724 /* Floor.swift in Sources */,
+				5748DD6C2CF3E47D00589724 /* GameScene.swift in Sources */,
+				5748DD6D2CF3E47D00589724 /* Component.swift in Sources */,
+				5748DD6E2CF3E47D00589724 /* SceneView.swift in Sources */,
+				5748DD6F2CF3E47D00589724 /* SceneViewController.swift in Sources */,
+				5748DD702CF3E47D00589724 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5748DD5F2CF3E47D00589724 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5748DD5E2CF3E47D00589724 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5773CAFB2CF2128000A7F2A4 /* Debug */ = {
@@ -133,6 +271,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S2TFH25BWZ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -161,6 +300,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S2TFH25BWZ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -299,7 +439,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5773CAE02CF2127F00A7F2A4 /* Build configuration list for PBXProject "Low-budget Survival Crafter" */ = {
+		5773CAE02CF2127F00A7F2A4 /* Build configuration list for PBXProject "LowBudgetSurvivalCrafter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5773CAFD2CF2128000A7F2A4 /* Debug */,

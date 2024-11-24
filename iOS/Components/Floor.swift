@@ -1,5 +1,5 @@
-import UIKit
 import SceneKit
+import UIKit
 
 class Floor: Component {
     private var floorNode: SCNNode!
@@ -14,7 +14,7 @@ class Floor: Component {
         if let floorTexture = UIImage(named: "Art.scnassets/grass.jpg") {
             floorGeometry.firstMaterial?.diffuse.contents = floorTexture
 
-            let textureScale: CGFloat = 10.0
+            let textureScale: CGFloat = 8.0
             floorGeometry.firstMaterial?.diffuse.contentsTransform = SCNMatrix4MakeScale(Float(textureScale), Float(textureScale), 1)
             floorGeometry.firstMaterial?.diffuse.wrapS = .repeat
             floorGeometry.firstMaterial?.diffuse.wrapT = .repeat
