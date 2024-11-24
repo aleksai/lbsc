@@ -1,10 +1,14 @@
 import UIKit
 import SceneKit
 
-class Floor {
-    var floorNode: SCNNode!
+class Floor: Component {
+    private var floorNode: SCNNode!
+    
+    override var nodes: [SCNNode] {
+        [floorNode]
+    }
 
-    init() {
+    override init() {
         // Floor Setup
         let floorGeometry = SCNPlane(width: 100, height: 100)
 

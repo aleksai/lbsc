@@ -9,23 +9,16 @@ class GameScene: SceneView {
     override func setupScene() {
         super.setupScene()
         
-        scene?.rootNode.addChildNode(characterWithCamera.cameraNode)
-        scene?.rootNode.addChildNode(characterWithCamera.boxNode)
-        
-        scene?.rootNode.addChildNode(floor.floorNode)
+        characterWithCamera.addToScene(scene)
+        floor.addToScene(scene)
     }
     
     override func setupGestureRecognizers() {
-        super.setupGestureRecognizers()
-        
-        let panGesture = UIPanGestureRecognizer(target: characterWithCamera, action: #selector(characterWithCamera.handlePan(_:)))
-        self.addGestureRecognizer(panGesture)
+        characterWithCamera.setupGestureRecognizers(self)
     }
     
     override func updateDisplay() {
-        super.updateDisplay()
-        
-        characterWithCamera.updateBoxPosition()
+        characterWithCamera.updateDisplay()
     }
 
 }

@@ -1,15 +1,20 @@
 import UIKit
 import SceneKit
 
-class CharacterWithCamera {
-    var boxNode: SCNNode!
-    var cameraNode: SCNNode!
-    var floorNode: SCNNode!
-    var movementVector = SCNVector3Zero
-    var cameraFollowSpeed: Float = 0.2
-    var initialTouchPoint: CGPoint?
+class CharacterWithCamera: Component {
+    private var boxNode: SCNNode!
+    private var cameraNode: SCNNode!
     
-    init() {
+    private var initialTouchPoint: CGPoint?
+    private var movementVector = SCNVector3Zero
+    
+    private var cameraFollowSpeed: Float = 0.2
+    
+    override var nodes: [SCNNode] {
+        [boxNode, cameraNode]
+    }
+    
+    override init() {
         // Camera Setup
         cameraNode = SCNNode()
         cameraNode.name = "camera"
@@ -26,7 +31,13 @@ class CharacterWithCamera {
         boxNode.position = SCNVector3(x: 0, y: 1, z: 0)
     }
     
-    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+    func setupGestureRecognizers(_ view: UIView) {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        view.addGestureRecognizer(panGesture)
+    }
+    
+    @objc
+    func handlePan(_ gesture: UIPanGestureRecognizer) {
         guard let view = gesture.view else { return }
         
         let location = gesture.location(in: view)
@@ -71,7 +82,7 @@ class CharacterWithCamera {
         }
     }
     
-    @objc func updateBoxPosition() {
+    @objc func updateDisplay() {
         let deltaTime: Float = 1.0 / 60.0
         let speed: Float = 10.0
 
