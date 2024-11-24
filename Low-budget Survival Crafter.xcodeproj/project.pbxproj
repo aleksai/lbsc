@@ -10,27 +10,7 @@
 		5773CAE92CF2128000A7F2A4 /* Low-budget Survival Crafter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Low-budget Survival Crafter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		5773CAF92CF2128000A7F2A4 /* Exceptions for "Low-budget Survival Crafter Shared" folder in "Low-budget Survival Crafter iOS" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Art.scnassets,
-				Assets.xcassets,
-				GameController.swift,
-			);
-			target = 5773CAE82CF2128000A7F2A4 /* Low-budget Survival Crafter iOS */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		5773CAE12CF2127F00A7F2A4 /* Low-budget Survival Crafter Shared */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				5773CAF92CF2128000A7F2A4 /* Exceptions for "Low-budget Survival Crafter Shared" folder in "Low-budget Survival Crafter iOS" target */,
-			);
-			path = "Low-budget Survival Crafter Shared";
-			sourceTree = "<group>";
-		};
 		5773CAEB2CF2128000A7F2A4 /* Low-budget Survival Crafter iOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Low-budget Survival Crafter iOS";
@@ -52,7 +32,6 @@
 		5773CADC2CF2127F00A7F2A4 = {
 			isa = PBXGroup;
 			children = (
-				5773CAE12CF2127F00A7F2A4 /* Low-budget Survival Crafter Shared */,
 				5773CAEB2CF2128000A7F2A4 /* Low-budget Survival Crafter iOS */,
 				5773CAEA2CF2128000A7F2A4 /* Products */,
 			);
@@ -157,10 +136,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -187,10 +164,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
