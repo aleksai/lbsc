@@ -3,21 +3,17 @@ import SceneKit
 
 class Floor: Component {
     private var floorNode: SCNNode!
-    
+
     override var nodes: [SCNNode] {
         [floorNode]
     }
 
     override init() {
-        // Floor Setup
         let floorGeometry = SCNPlane(width: 100, height: 100)
 
-        // Load the texture image
         if let floorTexture = UIImage(named: "Art.scnassets/grass.jpg") {
-            // Apply the texture to the floor's diffuse material
             floorGeometry.firstMaterial?.diffuse.contents = floorTexture
 
-            // Repeat the texture across the floor
             let textureScale: CGFloat = 10.0
             floorGeometry.firstMaterial?.diffuse.contentsTransform = SCNMatrix4MakeScale(Float(textureScale), Float(textureScale), 1)
             floorGeometry.firstMaterial?.diffuse.wrapS = .repeat

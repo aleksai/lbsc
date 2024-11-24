@@ -4,16 +4,16 @@ import SceneKit
 class CharacterWithCamera: Component {
     private var boxNode: SCNNode!
     private var cameraNode: SCNNode!
-    
+
     private var initialTouchPoint: CGPoint?
     private var movementVector = SCNVector3Zero
-    
+
     private var cameraFollowSpeed: Float = 0.2
-    
+
     override var nodes: [SCNNode] {
         [boxNode, cameraNode]
     }
-    
+
     override init() {
         // Camera Setup
         cameraNode = SCNNode()
@@ -30,58 +30,49 @@ class CharacterWithCamera: Component {
         boxNode.name = "box"
         boxNode.position = SCNVector3(x: 0, y: 1, z: 0)
     }
-    
+
     func setupGestureRecognizers(_ view: UIView) {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         view.addGestureRecognizer(panGesture)
     }
-    
+
     @objc
     func handlePan(_ gesture: UIPanGestureRecognizer) {
         guard let view = gesture.view else { return }
-        
+
         let location = gesture.location(in: view)
 
         switch gesture.state {
         case .began:
-            // Store the initial touch point
             initialTouchPoint = location
-
         case .changed:
             guard let initialPoint = initialTouchPoint else { return }
 
             let deltaX = Float(location.x - initialPoint.x)
             let deltaY = Float(location.y - initialPoint.y)
 
-            // Invert deltaY if needed to adjust movement direction
             let invertedDeltaY = -deltaY
 
-            // Calculate the movement vector based on the gesture position relative to the initial touch point
             let maxDistance = Float(min(view.bounds.width, view.bounds.height) / 2)
             let distance = sqrt(deltaX * deltaX + invertedDeltaY * invertedDeltaY)
             let normalizedDistance = min(distance / maxDistance, 1.0)
             let angle = atan2(invertedDeltaY, deltaX)
 
-            // Set movement vector
             movementVector = SCNVector3(
                 x: cos(angle) * normalizedDistance,
                 y: 0,
                 z: sin(angle) * normalizedDistance
             )
 
-            // If needed, invert Z to match coordinate system
             movementVector.z = -movementVector.z
-
         case .ended, .cancelled, .failed:
-            // Reset movement vector and initial touch point
             movementVector = SCNVector3Zero
             initialTouchPoint = nil
-
         default:
             break
         }
     }
-    
+
     @objc func updateDisplay() {
         let deltaTime: Float = 1.0 / 60.0
         let speed: Float = 10.0
@@ -90,16 +81,13 @@ class CharacterWithCamera: Component {
             let deltaX = movementVector.x * speed * deltaTime
             let deltaZ = movementVector.z * speed * deltaTime
 
-            // Update box position
             boxNode.position.x += deltaX
             boxNode.position.z += deltaZ
         }
 
-        // Add inertia to camera follow
         let deltaX = boxNode.position.x - cameraNode.position.x
         let deltaZ = boxNode.position.z - cameraNode.position.z
 
-        // Update the camera position incrementally
         cameraNode.position.x += deltaX * cameraFollowSpeed
         cameraNode.position.z += deltaZ * cameraFollowSpeed
     }
