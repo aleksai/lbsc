@@ -1,3 +1,4 @@
+import DI
 import SceneKit
 
 class Floor: Component {
@@ -8,19 +9,22 @@ class Floor: Component {
     }
 
     override init() {
-        let floorGeometry = SCNPlane(width: 100, height: 100)
+        @Injected(\.dataService) var dataService
 
-        if let floorTexture = XXImage(named: "Art.scnassets/grass.jpg") {
-            floorGeometry.firstMaterial?.diffuse.contents = floorTexture
+        let floorGeometry = SCNPlane(width: dataService.floorSize.width, height: dataService.floorSize.height)
 
-            let textureScale: Float = 8.0
-            floorGeometry.firstMaterial?.diffuse.contentsTransform = SCNMatrix4MakeScale(textureScale, textureScale, 1)
-            floorGeometry.firstMaterial?.diffuse.wrapS = .repeat
-            floorGeometry.firstMaterial?.diffuse.wrapT = .repeat
-        } else {
-            print("Error: Could not load floor texture image.")
-            floorGeometry.firstMaterial?.diffuse.contents = XXColor.systemPink
-        }
+        floorGeometry.firstMaterial?.diffuse.contents = XXColor.white
+
+//        if let floorTexture = XXImage(named: "Art.scnassets/grass.jpg") {
+//            floorGeometry.firstMaterial?.diffuse.contents = floorTexture
+//
+//            let textureScale: Float = 8.0
+//            floorGeometry.firstMaterial?.diffuse.contentsTransform = SCNMatrix4MakeScale(textureScale, textureScale, 1)
+//            floorGeometry.firstMaterial?.diffuse.wrapS = .repeat
+//            floorGeometry.firstMaterial?.diffuse.wrapT = .repeat
+//        } else {
+//            print("Error: Could not load floor texture image.")
+//        }
 
         floorGeometry.firstMaterial?.transparency = 1.0
 

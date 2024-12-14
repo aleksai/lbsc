@@ -23,8 +23,9 @@ class CharacterWithCamera: Component {
 
         // Box Setup
         let box = SCNBox(width: 2, height: 2, length: 2, chamferRadius: 0)
-        box.firstMaterial?.diffuse.contents = XXColor.black
+        box.firstMaterial?.diffuse.contents = XXColor(red: 212 / 255, green: 122 / 255, blue: 1, alpha: 1)
         box.firstMaterial?.transparency = 1.0
+
         boxNode = SCNNode(geometry: box)
         boxNode.name = "box"
         boxNode.position = SCNVector3(x: 0, y: 1, z: 0)
