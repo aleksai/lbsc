@@ -28,7 +28,7 @@ class SceneView: SCNView {
         let scene = SCNScene()
         self.scene = scene
 
-        backgroundColor = .white
+        backgroundColor = .black
 
         allowsCameraControl = false
         showsStatistics = false

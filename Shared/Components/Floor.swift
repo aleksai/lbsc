@@ -1,7 +1,5 @@
 import SceneKit
 
-// import UIKit
-
 class Floor: Component {
     private var floorNode: SCNNode!
 
@@ -29,5 +27,6 @@ class Floor: Component {
         floorNode = SCNNode(geometry: floorGeometry)
         floorNode.eulerAngles.x = -Float.pi / 2
         floorNode.position = SCNVector3(x: 0, y: 0, z: 0)
+        floorNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
     }
 }

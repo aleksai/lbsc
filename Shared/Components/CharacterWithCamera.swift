@@ -22,12 +22,15 @@ class CharacterWithCamera: Component {
         cameraNode.eulerAngles = SCNVector3(-Float.pi / 2, 0, 0)
 
         // Box Setup
-        let box = SCNSphere(radius: 1)
+        let box = SCNBox(width: 2, height: 2, length: 2, chamferRadius: 0)
         box.firstMaterial?.diffuse.contents = XXColor.black
         box.firstMaterial?.transparency = 1.0
         boxNode = SCNNode(geometry: box)
         boxNode.name = "box"
         boxNode.position = SCNVector3(x: 0, y: 1, z: 0)
+        boxNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        boxNode.physicsBody?.mass = 1
+        boxNode.physicsBody?.damping = 0.9
     }
 
     func setupGestureRecognizers(_ view: UIView) {
