@@ -1,5 +1,4 @@
 import SceneKit
-import UIKit
 
 class SceneView: SCNView {
     private var displayLink: CADisplayLink?

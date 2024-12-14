@@ -1,5 +1,4 @@
 import SceneKit
-import UIKit
 
 class GameScene: SceneView {
     private let characterWithCamera = CharacterWithCamera()

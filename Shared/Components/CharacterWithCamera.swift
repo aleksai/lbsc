@@ -1,5 +1,4 @@
 import SceneKit
-import UIKit
 
 class CharacterWithCamera: Component {
     private var boxNode: SCNNode!
@@ -24,7 +23,7 @@ class CharacterWithCamera: Component {
 
         // Box Setup
         let box = SCNSphere(radius: 1)
-        box.firstMaterial?.diffuse.contents = UIColor.black
+        box.firstMaterial?.diffuse.contents = XXColor.black
         box.firstMaterial?.transparency = 1.0
         boxNode = SCNNode(geometry: box)
         boxNode.name = "box"
@@ -79,8 +78,8 @@ class CharacterWithCamera: Component {
         let speed: Float = 10.0
 
         if movementVector.x != 0 || movementVector.y != 0 || movementVector.z != 0 {
-            let deltaX = movementVector.x * speed * deltaTime
-            let deltaZ = movementVector.z * speed * deltaTime
+            let deltaX = Float(movementVector.x) * speed * deltaTime
+            let deltaZ = Float(movementVector.z) * speed * deltaTime
 
             boxNode.position.x += deltaX
             boxNode.position.z += deltaZ
