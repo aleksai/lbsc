@@ -1,37 +1,38 @@
 import SceneKit
 
 class CharacterWithCamera: Component {
-    private var boxNode: SCNNode!
+    private var ballNode: SCNNode!
     private var cameraNode: SCNNode!
 
     private var initialTouchPoint: CGPoint?
     private var movementVector = SCNVector3Zero
 
     private var cameraFollowSpeed: Float = 0.2
+    private var gameOver = false
 
     override var nodes: [SCNNode] {
-        [boxNode, cameraNode]
+        [ballNode, cameraNode]
     }
 
     override init() {
-        // Camera Setup
         cameraNode = SCNNode()
         cameraNode.name = "camera"
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3(x: 0, y: 15, z: 0)
         cameraNode.eulerAngles = SCNVector3(-Float.pi / 2, 0, 0)
 
-        // Box Setup
-        let box = SCNBox(width: 2, height: 2, length: 2, chamferRadius: 0)
-        box.firstMaterial?.diffuse.contents = XXColor(red: 212 / 255, green: 122 / 255, blue: 1, alpha: 1)
-        box.firstMaterial?.transparency = 1.0
+        let sphere = SCNSphere(radius: 1.0)
+        sphere.firstMaterial?.diffuse.contents = UIColor(red: 212 / 255, green: 122 / 255, blue: 1, alpha: 1)
+        sphere.firstMaterial?.transparency = 1.0
 
-        boxNode = SCNNode(geometry: box)
-        boxNode.name = "box"
-        boxNode.position = SCNVector3(x: 0, y: 1, z: 0)
-        boxNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
-        boxNode.physicsBody?.mass = 1
-        boxNode.physicsBody?.damping = 0.9
+        ballNode = SCNNode(geometry: sphere)
+        ballNode.name = "ball"
+        ballNode.position = SCNVector3(x: 0, y: 1, z: 0)
+        ballNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        ballNode.physicsBody?.mass = 1
+        ballNode.physicsBody?.damping = 0.9
+
+        super.init()
     }
 
     func setupGestureRecognizers(_ view: UIView) {
@@ -66,33 +67,35 @@ class CharacterWithCamera: Component {
                 y: 0,
                 z: sin(angle) * normalizedDistance
             )
-
             movementVector.z = -movementVector.z
         case .cancelled, .ended, .failed:
             movementVector = SCNVector3Zero
-
             initialTouchPoint = nil
         default:
             break
         }
     }
 
-    @objc func updateDisplay() {
-        let deltaTime: Float = 1.0 / 60.0
-        let speed: Float = 10.0
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        guard !gameOver else { return }
 
-        if movementVector.x != 0 || movementVector.y != 0 || movementVector.z != 0 {
-            let deltaX = Float(movementVector.x) * speed * deltaTime
-            let deltaZ = Float(movementVector.z) * speed * deltaTime
+        let speed: Float = 1
 
-            boxNode.position.x += deltaX
-            boxNode.position.z += deltaZ
+        if movementVector.x != 0 || movementVector.z != 0 {
+            let forceX = movementVector.x * speed
+            let forceZ = movementVector.z * speed
+            let force = SCNVector3(forceX, 0, forceZ)
+            ballNode.physicsBody?.applyForce(force, asImpulse: true)
         }
 
-        let deltaX = boxNode.position.x - cameraNode.position.x
-        let deltaZ = boxNode.position.z - cameraNode.position.z
-
+        let ballPosition = ballNode.presentation.position
+        let deltaX = ballPosition.x - cameraNode.position.x
+        let deltaZ = ballPosition.z - cameraNode.position.z
         cameraNode.position.x += deltaX * cameraFollowSpeed
         cameraNode.position.z += deltaZ * cameraFollowSpeed
+
+        if ballPosition.y < -0.3 {
+            gameOver = true
+        }
     }
 }

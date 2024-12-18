@@ -8,6 +8,8 @@ class GameScene: SceneView {
     override func setupScene() {
         super.setupScene()
 
+        rendersContinuously = true
+
         floor.addToScene(scene)
 
         barrelGenerator.generate(amount: 20)
@@ -20,7 +22,7 @@ class GameScene: SceneView {
         characterWithCamera.setupGestureRecognizers(self)
     }
 
-    override func updateDisplay() {
-        characterWithCamera.updateDisplay()
+    override func renderer(_ renderer: any SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        characterWithCamera.renderer(renderer, updateAtTime: time)
     }
 }

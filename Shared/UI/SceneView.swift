@@ -1,14 +1,11 @@
 import SceneKit
 
 class SceneView: SCNView {
-    private var displayLink: CADisplayLink?
-
     override init(frame: CGRect, options: [String: Any]? = nil) {
         super.init(frame: frame, options: options)
 
         setupScene()
         setupGestureRecognizers()
-        setupDisplayLink()
     }
 
     required init?(coder: NSCoder) {
@@ -16,17 +13,15 @@ class SceneView: SCNView {
 
         setupScene()
         setupGestureRecognizers()
-        setupDisplayLink()
     }
 
-    deinit {
-        displayLink?.invalidate()
-        displayLink = nil
-    }
+    deinit {}
 
     func setupScene() {
         let scene = SCNScene()
         self.scene = scene
+
+        delegate = self
 
         backgroundColor = .black
 
@@ -36,11 +31,8 @@ class SceneView: SCNView {
     }
 
     func setupGestureRecognizers() {}
+}
 
-    func setupDisplayLink() {
-        displayLink = CADisplayLink(target: self, selector: #selector(updateDisplay))
-        displayLink?.add(to: .main, forMode: .default)
-    }
-
-    @objc func updateDisplay() {}
+extension SceneView: SCNSceneRendererDelegate {
+    func renderer(_ renderer: any SCNSceneRenderer, updateAtTime time: TimeInterval) {}
 }

@@ -15,6 +15,7 @@ class Barrel: Component {
         barrelGeometry.firstMaterial?.transparency = 1.0
 
         barrelNode = SCNNode(geometry: barrelGeometry)
+        barrelNode.name = "barrel"
 
         barrelNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
     }
@@ -36,7 +37,6 @@ class BarrelGenerator {
     func randomPositionOnFloor() -> SCNVector3 {
         let randomX = CGFloat.random(in: -dataService.floorSize.width / 2 + 5 ... dataService.floorSize.width / 2 - 5)
         let randomZ = CGFloat.random(in: -dataService.floorSize.height / 2 + 5 ... dataService.floorSize.height / 2 - 5)
-        print(randomX, randomZ)
         return SCNVector3(randomX, 1, randomZ)
     }
 }
