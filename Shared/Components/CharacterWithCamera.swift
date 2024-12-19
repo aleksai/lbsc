@@ -1,3 +1,4 @@
+import DI
 import SceneKit
 
 class CharacterWithCamera: Component {
@@ -7,26 +8,28 @@ class CharacterWithCamera: Component {
     private var initialTouchPoint: CGPoint?
     private var movementVector = SCNVector3Zero
 
-    private var cameraFollowSpeed: Float = 0.2
     private var gameOver = false
 
     override var nodes: [SCNNode] {
         [ballNode, cameraNode]
     }
 
+    @Injected(\.dataService) private var dataService
+
     override init() {
         cameraNode = SCNNode()
-        cameraNode.name = "camera"
+        cameraNode.name = "Camera"
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3(x: 0, y: 15, z: 0)
         cameraNode.eulerAngles = SCNVector3(-Float.pi / 2, 0, 0)
 
-        let sphere = SCNSphere(radius: 1.0)
-        sphere.firstMaterial?.diffuse.contents = UIColor(red: 212 / 255, green: 122 / 255, blue: 1, alpha: 1)
-        sphere.firstMaterial?.transparency = 1.0
+        let ball = SCNSphere(radius: 1.0)
 
-        ballNode = SCNNode(geometry: sphere)
-        ballNode.name = "ball"
+        ball.firstMaterial?.diffuse.contents = XXColor.ball
+        ball.firstMaterial?.transparency = 1.0
+
+        ballNode = SCNNode(geometry: ball)
+        ballNode.name = "Ball"
         ballNode.position = SCNVector3(x: 0, y: 1, z: 0)
         ballNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         ballNode.physicsBody?.mass = 1
@@ -79,11 +82,9 @@ class CharacterWithCamera: Component {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         guard !gameOver else { return }
 
-        let speed: Float = 1
-
         if movementVector.x != 0 || movementVector.z != 0 {
-            let forceX = movementVector.x * speed
-            let forceZ = movementVector.z * speed
+            let forceX = movementVector.x * dataService.ballSpeed
+            let forceZ = movementVector.z * dataService.ballSpeed
             let force = SCNVector3(forceX, 0, forceZ)
             ballNode.physicsBody?.applyForce(force, asImpulse: true)
         }
@@ -91,11 +92,9 @@ class CharacterWithCamera: Component {
         let ballPosition = ballNode.presentation.position
         let deltaX = ballPosition.x - cameraNode.position.x
         let deltaZ = ballPosition.z - cameraNode.position.z
-        cameraNode.position.x += deltaX * cameraFollowSpeed
-        cameraNode.position.z += deltaZ * cameraFollowSpeed
+        cameraNode.position.x += deltaX * dataService.cameraFollowSpeed
+        cameraNode.position.z += deltaZ * dataService.cameraFollowSpeed
 
-        if ballPosition.y < -0.3 {
-            gameOver = true
-        }
+        if ballPosition.y < dataService.fallY { gameOver = true }
     }
 }

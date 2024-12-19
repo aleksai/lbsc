@@ -11,11 +11,11 @@ class Barrel: Component {
     override init() {
         let barrelGeometry = SCNCylinder(radius: 1, height: 3)
 
-        barrelGeometry.firstMaterial?.diffuse.contents = XXColor.systemBlue
+        barrelGeometry.firstMaterial?.diffuse.contents = XXColor.barrel
         barrelGeometry.firstMaterial?.transparency = 1.0
 
         barrelNode = SCNNode(geometry: barrelGeometry)
-        barrelNode.name = "barrel"
+        barrelNode.name = "Barrel"
 
         barrelNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
     }

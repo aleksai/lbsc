@@ -15,11 +15,8 @@ class SceneView: SCNView {
         setupGestureRecognizers()
     }
 
-    deinit {}
-
     func setupScene() {
-        let scene = SCNScene()
-        self.scene = scene
+        scene = SCNScene()
 
         delegate = self
 

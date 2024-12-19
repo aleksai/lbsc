@@ -24,6 +24,7 @@
 		57F6CA182D0E058A009E3A35 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6CA172D0E0581009E3A35 /* DataService.swift */; };
 		57F6CA1A2D0E0599009E3A35 /* DI+DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6CA192D0E0594009E3A35 /* DI+DataService.swift */; };
 		57F6CA1D2D0E0647009E3A35 /* DI in Frameworks */ = {isa = PBXBuildFile; productRef = 57F6CA1C2D0E0647009E3A35 /* DI */; };
+		57FE0F312D147BC400C64C93 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE0F302D147BC100C64C93 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		57F6CA142D0E0498009E3A35 /* DI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DI; sourceTree = "<group>"; };
 		57F6CA172D0E0581009E3A35 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		57F6CA192D0E0594009E3A35 /* DI+DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DI+DataService.swift"; sourceTree = "<group>"; };
+		57FE0F302D147BC100C64C93 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +64,13 @@
 		5748DD2D2CF3E3FC00589724 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				57F6CA152D0E04D2009E3A35 /* Services */,
 				57F6CA132D0E048F009E3A35 /* Packages */,
+				57F6CA152D0E04D2009E3A35 /* Services */,
 				5748DD752CF3E7CB00589724 /* Config */,
-				5748DD602CF3E47D00589724 /* Resources */,
+				5748DD7E2CF3EACC00589724 /* Common */,
 				5748DD582CF3E47D00589724 /* Components */,
-				5748DD7E2CF3EACC00589724 /* UI */,
 				5748DD5B2CF3E47D00589724 /* Features */,
+				5748DD602CF3E47D00589724 /* Resources */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -128,13 +130,14 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		5748DD7E2CF3EACC00589724 /* UI */ = {
+		5748DD7E2CF3EACC00589724 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				57FE0F302D147BC100C64C93 /* Colors.swift */,
 				5748DD612CF3E47D00589724 /* Component.swift */,
 				5748DD622CF3E47D00589724 /* SceneView.swift */,
 			);
-			path = UI;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		5773CADC2CF2127F00A7F2A4 = {
@@ -284,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57F6CA1A2D0E0599009E3A35 /* DI+DataService.swift in Sources */,
+				57FE0F312D147BC400C64C93 /* Colors.swift in Sources */,
 				5748DDF32CF3EF3C00589724 /* TypeAliases.swift in Sources */,
 				5748DD6A2CF3E47D00589724 /* CharacterWithCamera.swift in Sources */,
 				5748DD6B2CF3E47D00589724 /* Floor.swift in Sources */,
