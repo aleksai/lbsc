@@ -11,8 +11,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         window = UIWindow()
 
-        let sceneView = GameScene(frame: .zero)
-        let sceneViewController = SceneViewController(sceneView: sceneView)
+        let scene = GameScene(frame: .zero)
+        let sceneViewController = GameSceneViewController(scene: scene)
 
         window?.rootViewController = sceneViewController
         window?.makeKeyAndVisible()

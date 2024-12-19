@@ -8,7 +8,7 @@ class CharacterWithCamera: Component {
     private var initialTouchPoint: CGPoint?
     private var movementVector = SCNVector3Zero
 
-    private var gameOver = false
+    @Published public private(set) var gameOver = false
 
     override var nodes: [SCNNode] {
         [ballNode, cameraNode]

@@ -1,6 +1,11 @@
+import Combine
 import SceneKit
 
-class GameScene: SceneView {
+class GameSceneState: SceneState {
+    @Published var gameOver: Bool = false
+}
+
+class GameScene: Scene {
     private let characterWithCamera = CharacterWithCamera()
     private let floor = Floor()
     private let barrelGenerator = BarrelGenerator()
@@ -16,6 +21,10 @@ class GameScene: SceneView {
         barrelGenerator.barrels.forEach { $0.addToScene(scene) }
 
         characterWithCamera.addToScene(scene)
+
+        if let state = state as? GameSceneState {
+            characterWithCamera.$gameOver.assign(to: &state.$gameOver)
+        }
     }
 
     override func setupGestureRecognizers() {

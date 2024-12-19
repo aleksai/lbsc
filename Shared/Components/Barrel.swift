@@ -26,6 +26,8 @@ class BarrelGenerator {
 
     @Injected(\.dataService) var dataService
 
+    @Published public private(set) var fallingBarrels: Int = 0
+
     func generate(amount: Int = 1) {
         for _ in 0 ..< amount + 1 {
             let barrel = Barrel()

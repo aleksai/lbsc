@@ -2,10 +2,10 @@ import SceneKit
 import UIKit
 
 class SceneViewController: UIViewController {
-    private let sceneView: SceneView
+    let scene: Scene
 
-    init(sceneView: SceneView) {
-        self.sceneView = sceneView
+    init(scene: Scene) {
+        self.scene = scene
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -15,6 +15,6 @@ class SceneViewController: UIViewController {
     }
 
     override func loadView() {
-        view = sceneView
+        view = scene
     }
 }

@@ -1,6 +1,10 @@
 import SceneKit
 
-class SceneView: SCNView {
+class SceneState: ObservableObject {}
+
+class Scene: SCNView {
+    @Published public var state: SceneState?
+
     override init(frame: CGRect, options: [String: Any]? = nil) {
         super.init(frame: frame, options: options)
 
@@ -30,6 +34,6 @@ class SceneView: SCNView {
     func setupGestureRecognizers() {}
 }
 
-extension SceneView: SCNSceneRendererDelegate {
+extension Scene: SCNSceneRendererDelegate {
     func renderer(_ renderer: any SCNSceneRenderer, updateAtTime time: TimeInterval) {}
 }

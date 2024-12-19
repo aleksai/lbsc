@@ -14,7 +14,7 @@
 		5748DD6B2CF3E47D00589724 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD572CF3E47D00589724 /* Floor.swift */; };
 		5748DD6C2CF3E47D00589724 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD592CF3E47D00589724 /* GameScene.swift */; };
 		5748DD6D2CF3E47D00589724 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD612CF3E47D00589724 /* Component.swift */; };
-		5748DD6E2CF3E47D00589724 /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD622CF3E47D00589724 /* SceneView.swift */; };
+		5748DD6E2CF3E47D00589724 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD622CF3E47D00589724 /* Scene.swift */; };
 		5748DD6F2CF3E47D00589724 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD632CF3E47D00589724 /* SceneViewController.swift */; };
 		5748DD702CF3E47D00589724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DD652CF3E47D00589724 /* AppDelegate.swift */; };
 		5748DD782CF3E7DC00589724 /* swiftlint in Resources */ = {isa = PBXBuildFile; fileRef = 5748DD772CF3E7DC00589724 /* swiftlint */; };
@@ -25,6 +25,7 @@
 		57F6CA1A2D0E0599009E3A35 /* DI+DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6CA192D0E0594009E3A35 /* DI+DataService.swift */; };
 		57F6CA1D2D0E0647009E3A35 /* DI in Frameworks */ = {isa = PBXBuildFile; productRef = 57F6CA1C2D0E0647009E3A35 /* DI */; };
 		57FE0F312D147BC400C64C93 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE0F302D147BC100C64C93 /* Colors.swift */; };
+		57FE0F332D1485EC00C64C93 /* GameSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FE0F322D1485E200C64C93 /* GameSceneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +36,7 @@
 		5748DD5D2CF3E47D00589724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5748DD5E2CF3E47D00589724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5748DD612CF3E47D00589724 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
-		5748DD622CF3E47D00589724 /* SceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
+		5748DD622CF3E47D00589724 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		5748DD632CF3E47D00589724 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		5748DD652CF3E47D00589724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5748DD762CF3E7DC00589724 /* swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = swiftformat; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		57F6CA172D0E0581009E3A35 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		57F6CA192D0E0594009E3A35 /* DI+DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DI+DataService.swift"; sourceTree = "<group>"; };
 		57FE0F302D147BC100C64C93 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		57FE0F322D1485E200C64C93 /* GameSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,9 +116,9 @@
 		5748DD662CF3E47D00589724 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				5748DD632CF3E47D00589724 /* SceneViewController.swift */,
-				5748DDEF2CF3EEE900589724 /* TypeAliases.swift */,
 				5748DD652CF3E47D00589724 /* AppDelegate.swift */,
+				5748DDEF2CF3EEE900589724 /* TypeAliases.swift */,
+				57FE0F342D14878F00C64C93 /* Controllers */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -135,7 +137,7 @@
 			children = (
 				57FE0F302D147BC100C64C93 /* Colors.swift */,
 				5748DD612CF3E47D00589724 /* Component.swift */,
-				5748DD622CF3E47D00589724 /* SceneView.swift */,
+				5748DD622CF3E47D00589724 /* Scene.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -180,6 +182,23 @@
 				57F6CA172D0E0581009E3A35 /* DataService.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		57FE0F342D14878F00C64C93 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5748DD632CF3E47D00589724 /* SceneViewController.swift */,
+				57FE0F352D14879F00C64C93 /* Features */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		57FE0F352D14879F00C64C93 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				57FE0F322D1485E200C64C93 /* GameSceneViewController.swift */,
+			);
+			path = Features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,11 +309,12 @@
 				57FE0F312D147BC400C64C93 /* Colors.swift in Sources */,
 				5748DDF32CF3EF3C00589724 /* TypeAliases.swift in Sources */,
 				5748DD6A2CF3E47D00589724 /* CharacterWithCamera.swift in Sources */,
+				57FE0F332D1485EC00C64C93 /* GameSceneViewController.swift in Sources */,
 				5748DD6B2CF3E47D00589724 /* Floor.swift in Sources */,
 				5748DD6C2CF3E47D00589724 /* GameScene.swift in Sources */,
 				57F6CA0E2D0DD875009E3A35 /* Barrel.swift in Sources */,
 				5748DD6D2CF3E47D00589724 /* Component.swift in Sources */,
-				5748DD6E2CF3E47D00589724 /* SceneView.swift in Sources */,
+				5748DD6E2CF3E47D00589724 /* Scene.swift in Sources */,
 				5748DD6F2CF3E47D00589724 /* SceneViewController.swift in Sources */,
 				5748DD702CF3E47D00589724 /* AppDelegate.swift in Sources */,
 				57F6CA182D0E058A009E3A35 /* DataService.swift in Sources */,
