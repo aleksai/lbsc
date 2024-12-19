@@ -24,6 +24,8 @@ class GameScene: Scene {
     }
 
     override func setupState() {
+        super.setupState()
+
         let state = GameSceneState()
         self.state = state
 
@@ -31,10 +33,14 @@ class GameScene: Scene {
     }
 
     override func setupGestureRecognizers() {
+        super.setupGestureRecognizers()
+
         characterWithCamera.setupGestureRecognizers(self)
     }
 
     override func renderer(_ renderer: any SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        super.renderer(renderer, updateAtTime: time)
+
         characterWithCamera.renderer(renderer, updateAtTime: time)
     }
 }
