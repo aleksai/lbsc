@@ -9,6 +9,7 @@ class Scene: SCNView {
         super.init(frame: frame, options: options)
 
         setupScene()
+        setupState()
         setupGestureRecognizers()
     }
 
@@ -16,6 +17,7 @@ class Scene: SCNView {
         super.init(coder: coder)
 
         setupScene()
+        setupState()
         setupGestureRecognizers()
     }
 
@@ -31,6 +33,7 @@ class Scene: SCNView {
         autoenablesDefaultLighting = true
     }
 
+    func setupState() {}
     func setupGestureRecognizers() {}
 }
 

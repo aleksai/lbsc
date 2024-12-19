@@ -15,15 +15,17 @@ class GameScene: Scene {
 
         rendersContinuously = true
 
-        let state = GameSceneState()
-        self.state = state
-
         floor.addToScene(scene)
 
         barrelGenerator.generate(amount: 20)
         barrelGenerator.barrels.forEach { $0.addToScene(scene) }
 
         characterWithCamera.addToScene(scene)
+    }
+
+    override func setupState() {
+        let state = GameSceneState()
+        self.state = state
 
         characterWithCamera.$gameOver.assign(to: &state.$gameOver)
     }
