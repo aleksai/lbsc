@@ -15,6 +15,9 @@ class GameScene: Scene {
 
         rendersContinuously = true
 
+        let state = GameSceneState()
+        self.state = state
+
         floor.addToScene(scene)
 
         barrelGenerator.generate(amount: 20)
@@ -22,9 +25,7 @@ class GameScene: Scene {
 
         characterWithCamera.addToScene(scene)
 
-        if let state = state as? GameSceneState {
-            characterWithCamera.$gameOver.assign(to: &state.$gameOver)
-        }
+        characterWithCamera.$gameOver.assign(to: &state.$gameOver)
     }
 
     override func setupGestureRecognizers() {

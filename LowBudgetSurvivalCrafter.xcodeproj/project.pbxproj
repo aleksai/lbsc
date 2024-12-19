@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5702B25E2D14D22E006EB57A /* NSLayoutConstraint+LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702B2592D14D22E006EB57A /* NSLayoutConstraint+LayoutBuilder.swift */; };
+		5702B25F2D14D22E006EB57A /* XXView+CommonConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702B25B2D14D22E006EB57A /* XXView+CommonConstraints.swift */; };
+		5702B2602D14D22E006EB57A /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702B2582D14D22E006EB57A /* NSLayoutConstraint+Extensions.swift */; };
+		5702B2612D14D22E006EB57A /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702B2572D14D22E006EB57A /* LayoutBuilder.swift */; };
+		5702B2622D14D22E006EB57A /* XXView+LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702B25C2D14D22E006EB57A /* XXView+LayoutBuilder.swift */; };
+		5702B2662D14D812006EB57A /* UIView+ClosureConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5702B2652D14D812006EB57A /* UIView+ClosureConfigurable.swift */; };
 		5748DD672CF3E47D00589724 /* Art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 5748DD5C2CF3E47D00589724 /* Art.scnassets */; };
 		5748DD682CF3E47D00589724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5748DD5D2CF3E47D00589724 /* Assets.xcassets */; };
 		5748DD692CF3E47D00589724 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5748DD5F2CF3E47D00589724 /* LaunchScreen.storyboard */; };
@@ -29,6 +35,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5702B2572D14D22E006EB57A /* LayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutBuilder.swift; sourceTree = "<group>"; };
+		5702B2582D14D22E006EB57A /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
+		5702B2592D14D22E006EB57A /* NSLayoutConstraint+LayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+LayoutBuilder.swift"; sourceTree = "<group>"; };
+		5702B25B2D14D22E006EB57A /* XXView+CommonConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XXView+CommonConstraints.swift"; sourceTree = "<group>"; };
+		5702B25C2D14D22E006EB57A /* XXView+LayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XXView+LayoutBuilder.swift"; sourceTree = "<group>"; };
+		5702B2652D14D812006EB57A /* UIView+ClosureConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ClosureConfigurable.swift"; sourceTree = "<group>"; };
 		5748DD562CF3E47D00589724 /* CharacterWithCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterWithCamera.swift; sourceTree = "<group>"; };
 		5748DD572CF3E47D00589724 /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
 		5748DD592CF3E47D00589724 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -63,6 +75,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5702B25D2D14D22E006EB57A /* AutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				5702B2572D14D22E006EB57A /* LayoutBuilder.swift */,
+				5702B2582D14D22E006EB57A /* NSLayoutConstraint+Extensions.swift */,
+				5702B2592D14D22E006EB57A /* NSLayoutConstraint+LayoutBuilder.swift */,
+				5702B25B2D14D22E006EB57A /* XXView+CommonConstraints.swift */,
+				5702B25C2D14D22E006EB57A /* XXView+LayoutBuilder.swift */,
+			);
+			path = AutoLayout;
+			sourceTree = "<group>";
+		};
+		5702B2642D14D804006EB57A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5702B2652D14D812006EB57A /* UIView+ClosureConfigurable.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		5748DD2D2CF3E3FC00589724 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +150,7 @@
 			children = (
 				5748DD652CF3E47D00589724 /* AppDelegate.swift */,
 				5748DDEF2CF3EEE900589724 /* TypeAliases.swift */,
+				5702B2642D14D804006EB57A /* Extensions */,
 				57FE0F342D14878F00C64C93 /* Controllers */,
 			);
 			path = iOS;
@@ -135,6 +168,7 @@
 		5748DD7E2CF3EACC00589724 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5702B25D2D14D22E006EB57A /* AutoLayout */,
 				57FE0F302D147BC100C64C93 /* Colors.swift */,
 				5748DD612CF3E47D00589724 /* Component.swift */,
 				5748DD622CF3E47D00589724 /* Scene.swift */,
@@ -308,12 +342,18 @@
 				57F6CA1A2D0E0599009E3A35 /* DI+DataService.swift in Sources */,
 				57FE0F312D147BC400C64C93 /* Colors.swift in Sources */,
 				5748DDF32CF3EF3C00589724 /* TypeAliases.swift in Sources */,
+				5702B25E2D14D22E006EB57A /* NSLayoutConstraint+LayoutBuilder.swift in Sources */,
+				5702B25F2D14D22E006EB57A /* XXView+CommonConstraints.swift in Sources */,
+				5702B2602D14D22E006EB57A /* NSLayoutConstraint+Extensions.swift in Sources */,
+				5702B2612D14D22E006EB57A /* LayoutBuilder.swift in Sources */,
+				5702B2622D14D22E006EB57A /* XXView+LayoutBuilder.swift in Sources */,
 				5748DD6A2CF3E47D00589724 /* CharacterWithCamera.swift in Sources */,
 				57FE0F332D1485EC00C64C93 /* GameSceneViewController.swift in Sources */,
 				5748DD6B2CF3E47D00589724 /* Floor.swift in Sources */,
 				5748DD6C2CF3E47D00589724 /* GameScene.swift in Sources */,
 				57F6CA0E2D0DD875009E3A35 /* Barrel.swift in Sources */,
 				5748DD6D2CF3E47D00589724 /* Component.swift in Sources */,
+				5702B2662D14D812006EB57A /* UIView+ClosureConfigurable.swift in Sources */,
 				5748DD6E2CF3E47D00589724 /* Scene.swift in Sources */,
 				5748DD6F2CF3E47D00589724 /* SceneViewController.swift in Sources */,
 				5748DD702CF3E47D00589724 /* AppDelegate.swift in Sources */,
