@@ -5,7 +5,7 @@ class Barrel: Component {
     enum Kind {
         case normal
     }
-    
+
     let kind: Kind
 
     private var barrelNode: SCNNode!

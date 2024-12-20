@@ -3,11 +3,11 @@ import SceneKit
 
 class BarrelGenerator {
     private(set) var barrels: [Barrel] = []
-    
+
     @Published public private(set) var falledBarrels: [Barrel.Kind: Int] = [:]
-    
+
     @Injected(\.dataService) private var dataService
-    
+
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         for barrel in barrels {
             guard let barrelPositionY = barrel.nodes.first?.presentation.position.y else { continue }
@@ -18,11 +18,11 @@ class BarrelGenerator {
             }
         }
     }
-    
+
     func reset() -> [Barrel] {
         barrels.forEach { $0.removeAll() }
         falledBarrels.removeAll()
-        
+
         return generate()
     }
 }
