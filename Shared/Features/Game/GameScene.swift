@@ -33,7 +33,7 @@ class GameScene: Scene {
         super.setupState()
 
         let state = GameSceneState(
-            reset: { [weak self] in self?.reset() }
+            reset: reset
         )
 
         self.state = state
