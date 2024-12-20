@@ -97,4 +97,13 @@ class CharacterWithCamera: Component {
 
         if ballPosition.y < dataService.fallY { gameOver = true }
     }
+
+    func reset() {
+        ballNode.position = SCNVector3(x: 0, y: 1.1, z: 0)
+        ballNode.physicsBody?.velocity = SCNVector3(x: 0, y: 0, z: 0)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.03) { [weak self] in
+            self?.gameOver = false
+        }
+    }
 }

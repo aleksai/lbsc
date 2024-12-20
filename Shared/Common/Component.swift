@@ -8,4 +8,10 @@ class Component {
             scene?.rootNode.addChildNode(node)
         }
     }
+
+    func removeAll() {
+        for node in nodes {
+            node.removeFromParentNode()
+        }
+    }
 }

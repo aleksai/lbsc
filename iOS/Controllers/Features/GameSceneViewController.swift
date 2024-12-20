@@ -18,6 +18,8 @@ class GameSceneViewController: SceneViewController {
 
 private extension GameSceneViewController {
     class ControlsView: UIView {
+        private var onDidTapStartOver: (() -> Void)?
+
         private var cancellables: Set<AnyCancellable> = []
 
         private lazy var scoreLabel = UILabel().configure { label in
@@ -65,7 +67,9 @@ private extension GameSceneViewController {
                 startOverButton.heightAnchor.constraint(equalToConstant: 50)
             }
 
-            state?.$gameOver
+            guard let state else { return }
+
+            state.$gameOver
                 .receive(on: RunLoop.main)
                 .sink { [weak self] gameOver in
                     self?.gameOverLabel.isHidden = !gameOver
@@ -73,12 +77,14 @@ private extension GameSceneViewController {
                 }
                 .store(in: &cancellables)
 
-//            state?.$score
-//                .receive(on: RunLoop.main)
-//                .sink { [weak self] newScore in
-//                    self?.scoreLabel.text = "Score: \(newScore)"
-//                }
-//                .store(in: &cancellables)
+            state.$score
+                .receive(on: RunLoop.main)
+                .sink { [weak self] newScore in
+                    self?.scoreLabel.text = "Score: \(newScore)"
+                }
+                .store(in: &cancellables)
+
+            onDidTapStartOver = { [weak state] in state?.reset() }
         }
 
         @available(*, unavailable)
@@ -86,7 +92,9 @@ private extension GameSceneViewController {
             fatalError("init(coder:) has not been implemented")
         }
 
-        @objc private func didTapStartOver() {}
+        @objc private func didTapStartOver() {
+            onDidTapStartOver?()
+        }
 
         override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
             let hitView = super.hitTest(point, with: event)

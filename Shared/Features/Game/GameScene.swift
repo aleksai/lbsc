@@ -2,7 +2,14 @@ import Combine
 import SceneKit
 
 class GameSceneState: SceneState {
-    @Published var gameOver: Bool = false
+    @Published fileprivate(set) var gameOver: Bool = false
+    @Published fileprivate(set) var score: Int = 0
+
+    let reset: () -> Void
+
+    init(reset: @escaping () -> Void) {
+        self.reset = reset
+    }
 }
 
 class GameScene: Scene {
@@ -17,8 +24,7 @@ class GameScene: Scene {
 
         floor.addToScene(scene)
 
-        barrelGenerator.generate(amount: 20)
-        barrelGenerator.barrels.forEach { $0.addToScene(scene) }
+        barrelGenerator.generate(amount: 20).forEach { $0.addToScene(scene) }
 
         characterWithCamera.addToScene(scene)
     }
@@ -26,7 +32,10 @@ class GameScene: Scene {
     override func setupState() {
         super.setupState()
 
-        let state = GameSceneState()
+        let state = GameSceneState(
+            reset: { [weak self] in self?.reset() }
+        )
+
         self.state = state
 
         characterWithCamera.$gameOver.assign(to: &state.$gameOver)
@@ -42,5 +51,12 @@ class GameScene: Scene {
         super.renderer(renderer, updateAtTime: time)
 
         characterWithCamera.renderer(renderer, updateAtTime: time)
+    }
+
+    private func reset() {
+        barrelGenerator.barrels.forEach { $0.removeAll() }
+        barrelGenerator.generate(amount: 20).forEach { $0.addToScene(scene) }
+
+        characterWithCamera.reset()
     }
 }

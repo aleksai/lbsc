@@ -28,12 +28,16 @@ class BarrelGenerator {
 
     @Published public private(set) var fallingBarrels: Int = 0
 
-    func generate(amount: Int = 1) {
+    func generate(amount: Int = 1) -> [Barrel] {
+        barrels.removeAll()
+
         for _ in 0 ..< amount + 1 {
             let barrel = Barrel()
             barrel.nodes.first?.position = randomPositionOnFloor()
             barrels.append(barrel)
         }
+
+        return barrels
     }
 
     func randomPositionOnFloor() -> SCNVector3 {
