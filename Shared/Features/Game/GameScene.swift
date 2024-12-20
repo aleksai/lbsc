@@ -26,9 +26,7 @@ class GameScene: Scene {
         rendersContinuously = true
 
         floor.addToScene(scene)
-
-        barrelGenerator.generate(amount: 20).forEach { $0.addToScene(scene) }
-
+        barrelGenerator.reset().forEach { $0.addToScene(scene) }
         characterWithCamera.addToScene(scene)
     }
 
@@ -70,11 +68,8 @@ class GameScene: Scene {
     }
 
     private func reset() {
-        barrelGenerator.barrels.forEach { $0.removeAll() }
-        barrelGenerator.generate(amount: 20).forEach { $0.addToScene(scene) }
-
         characterWithCamera.reset()
-        barrelGenerator.reset()
+        barrelGenerator.reset().forEach { $0.addToScene(scene) }
     }
 
     private func estimateScore(falledBarrels: [Barrel.Kind: Int], scoreMultiplier: Int) {
