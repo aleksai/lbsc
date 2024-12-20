@@ -25,6 +25,11 @@ class GameScene: Scene {
         antialiasingMode = .multisampling4X
         rendersContinuously = true
 
+        scene?.fogColor = UIColor.black
+        scene?.fogStartDistance = 1.0
+        scene?.fogEndDistance = 100.0
+        scene?.fogDensityExponent = 10.0
+
         floor.addToScene(scene)
         barrelGenerator.reset().forEach { $0.addToScene(scene) }
         characterWithCamera.addToScene(scene)
