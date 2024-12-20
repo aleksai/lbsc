@@ -17,9 +17,12 @@ class GameScene: Scene {
     private let floor = Floor()
     private let barrelGenerator = BarrelGenerator()
 
+    private var cancellables: Set<AnyCancellable> = []
+
     override func setupScene() {
         super.setupScene()
 
+        antialiasingMode = .multisampling4X
         rendersContinuously = true
 
         floor.addToScene(scene)
@@ -39,6 +42,18 @@ class GameScene: Scene {
         self.state = state
 
         characterWithCamera.$gameOver.assign(to: &state.$gameOver)
+
+        Publishers.CombineLatest(
+            barrelGenerator.$falledBarrels,
+            characterWithCamera.$scoreMultiplier
+        )
+        .sink { [weak self] falledBarrels, scoreMultiplier in
+            self?.estimateScore(
+                falledBarrels: falledBarrels,
+                scoreMultiplier: scoreMultiplier
+            )
+        }
+        .store(in: &cancellables)
     }
 
     override func setupGestureRecognizers() {
@@ -51,6 +66,7 @@ class GameScene: Scene {
         super.renderer(renderer, updateAtTime: time)
 
         characterWithCamera.renderer(renderer, updateAtTime: time)
+        barrelGenerator.renderer(renderer, updateAtTime: time)
     }
 
     private func reset() {
@@ -58,5 +74,11 @@ class GameScene: Scene {
         barrelGenerator.generate(amount: 20).forEach { $0.addToScene(scene) }
 
         characterWithCamera.reset()
+        barrelGenerator.reset()
+    }
+
+    private func estimateScore(falledBarrels: [Barrel.Kind: Int], scoreMultiplier: Int) {
+        guard let state = state as? GameSceneState else { return }
+        state.score = scoreMultiplier * falledBarrels.reduce(0) { $0 + $1.value }
     }
 }

@@ -9,6 +9,7 @@ class CharacterWithCamera: Component {
     private var movementVector = SCNVector3Zero
 
     @Published public private(set) var gameOver = false
+    @Published public private(set) var scoreMultiplier: Int = 1
 
     override var nodes: [SCNNode] {
         [ballNode, cameraNode]
@@ -100,7 +101,7 @@ class CharacterWithCamera: Component {
 
     func reset() {
         ballNode.position = SCNVector3(x: 0, y: 1.1, z: 0)
-        ballNode.physicsBody?.velocity = SCNVector3(x: 0, y: 0, z: 0)
+        ballNode.physicsBody?.velocity = SCNVector3Zero
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.03) { [weak self] in
             self?.gameOver = false

@@ -2,13 +2,23 @@ import DI
 import SceneKit
 
 class Barrel: Component {
+    enum Kind {
+        case normal
+    }
+
     private var barrelNode: SCNNode!
+
+    let kind: Kind
 
     override var nodes: [SCNNode] {
         [barrelNode]
     }
 
-    override init() {
+    init(kind: Kind) {
+        self.kind = kind
+
+        super.init()
+
         let barrelGeometry = SCNCylinder(radius: 1, height: 3)
 
         barrelGeometry.firstMaterial?.diffuse.contents = XXColor.barrel
@@ -26,13 +36,28 @@ class BarrelGenerator {
 
     @Injected(\.dataService) var dataService
 
-    @Published public private(set) var fallingBarrels: Int = 0
+    @Published public private(set) var falledBarrels: [Barrel.Kind: Int] = [:]
+
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        for barrel in barrels {
+            guard let barrelPositionY = barrel.nodes.first?.presentation.position.y else { continue }
+            if barrelPositionY < dataService.fallY {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) { barrel.removeAll() }
+                falledBarrels[barrel.kind, default: 0] += dataService.normalBarrelFallScore
+                barrels.removeAll { $0 === barrel }
+            }
+        }
+    }
+
+    func reset() {
+        falledBarrels.removeAll()
+    }
 
     func generate(amount: Int = 1) -> [Barrel] {
         barrels.removeAll()
 
         for _ in 0 ..< amount + 1 {
-            let barrel = Barrel()
+            let barrel = Barrel(kind: .normal)
             barrel.nodes.first?.position = randomPositionOnFloor()
             barrels.append(barrel)
         }

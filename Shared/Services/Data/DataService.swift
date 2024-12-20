@@ -7,4 +7,6 @@ public struct DataService {
     let cameraFollowSpeed: Float = 0.2
 
     let fallY: Float = -0.3
+
+    let normalBarrelFallScore = 100
 }
