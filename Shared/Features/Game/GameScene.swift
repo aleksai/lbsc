@@ -89,8 +89,7 @@ class GameScene: Scene {
         if let fallEvent = event as? BarrelGenerator.FallEvent {
             switch fallEvent.barrelKind {
             case .normal:
-                let flyingEvent = FlyingEvent(string: "+100", color: .systemGreen, position: fallEvent.position)
-                flyingEvent.addToScene(scene)
+                FlyingEvent(string: "+100", color: .systemGreen, position: fallEvent.position).addToScene(scene)
             }
         }
     }
