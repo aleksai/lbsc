@@ -26,6 +26,8 @@ class Scene: SCNView {
 
         delegate = self
 
+        antialiasingMode = .multisampling4X
+
         backgroundColor = .black
 
         allowsCameraControl = false

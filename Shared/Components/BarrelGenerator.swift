@@ -1,8 +1,19 @@
+import Combine
 import DI
 import SceneKit
 
 class BarrelGenerator {
     private(set) var barrels: [Barrel] = []
+
+    struct FallEvent: Event {
+        let position: SCNVector3
+        let barrelKind: Barrel.Kind
+    }
+
+    private let fallEventSubject = PassthroughSubject<FallEvent, Never>()
+    var onBarrelFalling: AnyPublisher<FallEvent, Never> {
+        fallEventSubject.eraseToAnyPublisher()
+    }
 
     @Published public private(set) var falledBarrels: [Barrel.Kind: Int] = [:]
 
@@ -10,8 +21,10 @@ class BarrelGenerator {
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         for barrel in barrels {
-            guard let barrelPositionY = barrel.nodes.first?.presentation.position.y else { continue }
-            if barrelPositionY < dataService.fallY {
+            guard let barrelPosition = barrel.nodes.first?.presentation.position else { continue }
+            if barrelPosition.y < dataService.fallY {
+                fallEventSubject.send(FallEvent(position: barrelPosition, barrelKind: barrel.kind))
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) { barrel.removeAll() }
                 falledBarrels[barrel.kind, default: 0] += dataService.normalBarrelFallScore
                 barrels.removeAll { $0 === barrel }
@@ -19,7 +32,7 @@ class BarrelGenerator {
         }
     }
 
-    func reset() -> [Barrel] {
+    func resetAndRegenerate() -> [Barrel] {
         barrels.forEach { $0.removeAll() }
         falledBarrels.removeAll()
 

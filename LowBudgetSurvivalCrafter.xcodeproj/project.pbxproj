@@ -27,6 +27,8 @@
 		5748DD782CF3E7DC00589724 /* swiftlint in Resources */ = {isa = PBXBuildFile; fileRef = 5748DD772CF3E7DC00589724 /* swiftlint */; };
 		5748DD792CF3E7DC00589724 /* swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 5748DD762CF3E7DC00589724 /* swiftformat */; };
 		5748DDF32CF3EF3C00589724 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748DDEF2CF3EEE900589724 /* TypeAliases.swift */; };
+		5784D9BC2D1701E300A3E23A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D9BB2D1701E000A3E23A /* Event.swift */; };
+		5784D9BE2D17056600A3E23A /* FlyingEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D9BD2D17055C00A3E23A /* FlyingEvent.swift */; };
 		57F6CA0E2D0DD875009E3A35 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6CA0D2D0DD86E009E3A35 /* Barrel.swift */; };
 		57F6CA182D0E058A009E3A35 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6CA172D0E0581009E3A35 /* DataService.swift */; };
 		57F6CA1A2D0E0599009E3A35 /* DI+DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6CA192D0E0594009E3A35 /* DI+DataService.swift */; };
@@ -57,6 +59,8 @@
 		5748DD772CF3E7DC00589724 /* swiftlint */ = {isa = PBXFileReference; lastKnownFileType = text; path = swiftlint; sourceTree = "<group>"; };
 		5748DDEF2CF3EEE900589724 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		5773CAE92CF2128000A7F2A4 /* Low-budget Survival Crafter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Low-budget Survival Crafter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5784D9BB2D1701E000A3E23A /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		5784D9BD2D17055C00A3E23A /* FlyingEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyingEvent.swift; sourceTree = "<group>"; };
 		57F6CA0D2D0DD86E009E3A35 /* Barrel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barrel.swift; sourceTree = "<group>"; };
 		57F6CA142D0E0498009E3A35 /* DI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DI; sourceTree = "<group>"; };
 		57F6CA172D0E0581009E3A35 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				5748DD562CF3E47D00589724 /* CharacterWithCamera.swift */,
 				57F6CA0D2D0DD86E009E3A35 /* Barrel.swift */,
 				5702B2672D15D7C6006EB57A /* BarrelGenerator.swift */,
+				5784D9BD2D17055C00A3E23A /* FlyingEvent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 				57FE0F302D147BC100C64C93 /* Colors.swift */,
 				5748DD612CF3E47D00589724 /* Component.swift */,
 				5748DD622CF3E47D00589724 /* Scene.swift */,
+				5784D9BB2D1701E000A3E23A /* Event.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -359,8 +365,10 @@
 				5702B2662D14D812006EB57A /* UIView+ClosureConfigurable.swift in Sources */,
 				5748DD6E2CF3E47D00589724 /* Scene.swift in Sources */,
 				5748DD6F2CF3E47D00589724 /* SceneViewController.swift in Sources */,
+				5784D9BE2D17056600A3E23A /* FlyingEvent.swift in Sources */,
 				5748DD702CF3E47D00589724 /* AppDelegate.swift in Sources */,
 				57F6CA182D0E058A009E3A35 /* DataService.swift in Sources */,
+				5784D9BC2D1701E300A3E23A /* Event.swift in Sources */,
 				5702B2682D15D7CB006EB57A /* BarrelGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

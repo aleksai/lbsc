@@ -22,7 +22,6 @@ class GameScene: Scene {
     override func setupScene() {
         super.setupScene()
 
-        antialiasingMode = .multisampling4X
         rendersContinuously = true
 
         scene?.fogColor = UIColor.black
@@ -31,7 +30,7 @@ class GameScene: Scene {
         scene?.fogDensityExponent = 10.0
 
         floor.addToScene(scene)
-        barrelGenerator.reset().forEach { $0.addToScene(scene) }
+        barrelGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
         characterWithCamera.addToScene(scene)
     }
 
@@ -57,6 +56,10 @@ class GameScene: Scene {
             )
         }
         .store(in: &cancellables)
+
+        barrelGenerator.onBarrelFalling.sink { [weak self] fallEvent in
+            self?.showFlyingEvent(fallEvent)
+        }.store(in: &cancellables)
     }
 
     override func setupGestureRecognizers() {
@@ -74,11 +77,21 @@ class GameScene: Scene {
 
     private func reset() {
         characterWithCamera.reset()
-        barrelGenerator.reset().forEach { $0.addToScene(scene) }
+        barrelGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
     }
 
     private func estimateScore(falledBarrels: [Barrel.Kind: Int], scoreMultiplier: Int) {
         guard let state = state as? GameSceneState else { return }
         state.score = scoreMultiplier * falledBarrels.reduce(0) { $0 + $1.value }
+    }
+
+    private func showFlyingEvent(_ event: Event) {
+        if let fallEvent = event as? BarrelGenerator.FallEvent {
+            switch fallEvent.barrelKind {
+            case .normal:
+                let flyingEvent = FlyingEvent(string: "+100", color: .systemGreen, position: fallEvent.position)
+                flyingEvent.addToScene(scene)
+            }
+        }
     }
 }
