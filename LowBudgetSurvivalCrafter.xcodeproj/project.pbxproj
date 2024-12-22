@@ -30,8 +30,9 @@
 		5784D9BC2D1701E300A3E23A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D9BB2D1701E000A3E23A /* Event.swift */; };
 		5784D9BE2D17056600A3E23A /* FlyingTextEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D9BD2D17055C00A3E23A /* FlyingTextEvent.swift */; };
 		5784D9C12D171A5B00A3E23A /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D9C02D171A5800A3E23A /* Zone.swift */; };
-		5784D9C42D186BAF00A3E23A /* SCNMatrix+pivot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D9C32D186B9500A3E23A /* SCNMatrix+pivot.swift */; };
+		5784D9C42D186BAF00A3E23A /* SCNMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D9C32D186B9500A3E23A /* SCNMatrix.swift */; };
 		5784D9C62D18755D00A3E23A /* ZoneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D9C52D18755500A3E23A /* ZoneGenerator.swift */; };
+		5784D9C82D187B3200A3E23A /* SCNNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5784D9C72D187B2900A3E23A /* SCNNode.swift */; };
 		57F6CA0E2D0DD875009E3A35 /* Barrel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6CA0D2D0DD86E009E3A35 /* Barrel.swift */; };
 		57F6CA182D0E058A009E3A35 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6CA172D0E0581009E3A35 /* DataService.swift */; };
 		57F6CA1A2D0E0599009E3A35 /* DI+DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F6CA192D0E0594009E3A35 /* DI+DataService.swift */; };
@@ -65,8 +66,9 @@
 		5784D9BB2D1701E000A3E23A /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		5784D9BD2D17055C00A3E23A /* FlyingTextEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyingTextEvent.swift; sourceTree = "<group>"; };
 		5784D9C02D171A5800A3E23A /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
-		5784D9C32D186B9500A3E23A /* SCNMatrix+pivot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNMatrix+pivot.swift"; sourceTree = "<group>"; };
+		5784D9C32D186B9500A3E23A /* SCNMatrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNMatrix.swift; sourceTree = "<group>"; };
 		5784D9C52D18755500A3E23A /* ZoneGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoneGenerator.swift; sourceTree = "<group>"; };
+		5784D9C72D187B2900A3E23A /* SCNNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNode.swift; sourceTree = "<group>"; };
 		57F6CA0D2D0DD86E009E3A35 /* Barrel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barrel.swift; sourceTree = "<group>"; };
 		57F6CA142D0E0498009E3A35 /* DI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DI; sourceTree = "<group>"; };
 		57F6CA172D0E0581009E3A35 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -213,7 +215,8 @@
 		5784D9C22D186B8400A3E23A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5784D9C32D186B9500A3E23A /* SCNMatrix+pivot.swift */,
+				5784D9C72D187B2900A3E23A /* SCNNode.swift */,
+				5784D9C32D186B9500A3E23A /* SCNMatrix.swift */,
 				5702B25D2D14D22E006EB57A /* AutoLayout */,
 			);
 			path = Extensions;
@@ -373,6 +376,7 @@
 				5702B2602D14D22E006EB57A /* NSLayoutConstraint+Extensions.swift in Sources */,
 				5702B2612D14D22E006EB57A /* LayoutBuilder.swift in Sources */,
 				5702B2622D14D22E006EB57A /* XXView+LayoutBuilder.swift in Sources */,
+				5784D9C82D187B3200A3E23A /* SCNNode.swift in Sources */,
 				5748DD6A2CF3E47D00589724 /* CharacterWithCamera.swift in Sources */,
 				57FE0F332D1485EC00C64C93 /* GameSceneViewController.swift in Sources */,
 				5748DD6B2CF3E47D00589724 /* Floor.swift in Sources */,
@@ -388,7 +392,7 @@
 				57F6CA182D0E058A009E3A35 /* DataService.swift in Sources */,
 				5784D9C62D18755D00A3E23A /* ZoneGenerator.swift in Sources */,
 				5784D9BC2D1701E300A3E23A /* Event.swift in Sources */,
-				5784D9C42D186BAF00A3E23A /* SCNMatrix+pivot.swift in Sources */,
+				5784D9C42D186BAF00A3E23A /* SCNMatrix.swift in Sources */,
 				5702B2682D15D7CB006EB57A /* BarrelGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

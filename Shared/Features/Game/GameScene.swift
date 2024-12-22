@@ -35,8 +35,8 @@ class GameScene: Scene {
 
         floor.addToScene(scene)
 
-        zoneGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
-        barrelGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
+        zoneGenerator.regenerate().forEach { $0.addToScene(scene) }
+        barrelGenerator.regenerate().forEach { $0.addToScene(scene) }
 
         characterWithCamera.addToScene(scene)
     }
@@ -82,12 +82,20 @@ class GameScene: Scene {
         characterWithCamera.renderer(renderer, updateAtTime: time)
         barrelGenerator.renderer(renderer, updateAtTime: time)
         zoneGenerator.renderer(renderer, updateAtTime: time)
+
+        for zone in zoneGenerator.zones {
+            for barrel in barrelGenerator.barrels.filter({ $0.kind == .zone }) {
+                let stands = barrel.main.stands(on: zone.main)
+                barrel.showCheckmark(stands && zone.kind == .multiplier)
+            }
+        }
     }
 
     private func reset() {
         characterWithCamera.reset()
-        barrelGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
-        zoneGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
+
+        barrelGenerator.regenerate().forEach { $0.addToScene(scene) }
+        zoneGenerator.regenerate().forEach { $0.addToScene(scene) }
     }
 
     private func estimateScore(falledBarrels: [Barrel.Kind: Int], scoreMultiplier: Int) {

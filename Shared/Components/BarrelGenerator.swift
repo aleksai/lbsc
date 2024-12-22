@@ -22,9 +22,9 @@ class BarrelGenerator {
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         for barrel in barrels {
-            guard let barrelPosition = barrel.nodes.first?.presentation.position else { continue }
-            if barrelPosition.y < dataService.fallY {
-                fallEventSubject.send(FallEvent(position: barrelPosition, barrelKind: barrel.kind))
+            let position = barrel.main.presentation.position
+            if position.y < dataService.fallY {
+                fallEventSubject.send(FallEvent(position: position, barrelKind: barrel.kind))
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) { barrel.removeAll() }
                 falledBarrels[barrel.kind, default: 0] += 1
@@ -33,7 +33,7 @@ class BarrelGenerator {
         }
     }
 
-    func resetAndRegenerate() -> [Barrel] {
+    func regenerate() -> [Barrel] {
         barrels.forEach { $0.removeAll() }
         falledBarrels.removeAll()
 
@@ -62,6 +62,6 @@ private extension BarrelGenerator {
     func randomPositionOnFloor() -> SCNVector3 {
         let randomX = CGFloat.random(in: -dataService.floorSize.width / 2 + 5 ... dataService.floorSize.width / 2 - 5)
         let randomZ = CGFloat.random(in: -dataService.floorSize.height / 2 + 5 ... dataService.floorSize.height / 2 - 5)
-        return SCNVector3(randomX, 1, randomZ)
+        return SCNVector3(randomX, 2.5, randomZ)
     }
 }

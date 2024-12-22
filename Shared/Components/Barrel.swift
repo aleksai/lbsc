@@ -21,33 +21,32 @@ class Barrel: Component {
 
         super.init()
 
-        let barrelGeometry = SCNCylinder(radius: 1, height: 3)
+        let barrel = SCNCylinder(radius: 1, height: 3)
 
-        barrelGeometry.firstMaterial?.diffuse.contents = XXColor.barrel[kind] ?? .black
-        barrelGeometry.firstMaterial?.transparency = 1.0
+        barrel.firstMaterial?.diffuse.contents = XXColor.barrel[kind] ?? .black
+        barrel.firstMaterial?.transparency = 1.0
 
-        barrelNode = SCNNode(geometry: barrelGeometry)
+        barrelNode = SCNNode(geometry: barrel)
         barrelNode.name = "Barrel"
 
         barrelNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
 
-        let symbolImage = UIImage(systemName: "checkmark.circle")!.withTintColor(.white, renderingMode: .alwaysOriginal)
-        let material = SCNMaterial()
-        material.diffuse.contents = symbolImage
+        let checkmarkMaterial = SCNMaterial()
+        checkmarkMaterial.diffuse.contents = UIImage(systemName: "checkmark")!
 
-        let plane = SCNPlane(width: 1, height: 1)
-        plane.materials = [material]
+        let checkmark = SCNPlane(width: 0.6, height: 0.6)
+        checkmark.materials = [checkmarkMaterial]
 
-        checkmarkNode = SCNNode(geometry: plane)
+        checkmarkNode = SCNNode(geometry: checkmark)
         checkmarkNode.name = "BarrelCheckmark"
         checkmarkNode.eulerAngles.x = -Float.pi / 2
-        checkmarkNode.position = SCNVector3(0, 1.51, 0)
+        checkmarkNode.position = SCNVector3(0, 1.501, 0)
         checkmarkNode.opacity = 0
 
         barrelNode.addChildNode(checkmarkNode)
     }
 
-    func showCheckmark() {
-        checkmarkNode.opacity = 1
+    func showCheckmark(_ show: Bool) {
+        checkmarkNode.opacity = show ? 1 : 0
     }
 }

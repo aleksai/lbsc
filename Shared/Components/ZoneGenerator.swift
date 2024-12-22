@@ -9,7 +9,7 @@ class ZoneGenerator {
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {}
 
-    func resetAndRegenerate() -> [Zone] {
+    func regenerate() -> [Zone] {
         zones.forEach { $0.removeAll() }
 
         return generate()
