@@ -34,7 +34,7 @@ class GameScene: Scene {
 
         floor.addToScene(scene)
 
-        FloorZone(.multiplier, size: CGSize(width: 6, height: 6), position: SCNVector3Zero).addToScene(scene)
+        FloorZone(.multiplier, size: CGSize(width: 3, height: 3), position: SCNVector3Zero).addToScene(scene)
 
         barrelGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
         characterWithCamera.addToScene(scene)
@@ -64,7 +64,7 @@ class GameScene: Scene {
         .store(in: &cancellables)
 
         barrelGenerator.onBarrelFalling.sink { [weak self] fallEvent in
-            self?.showFlyingEvent(fallEvent)
+            self?.showFlyingTextEvent(fallEvent)
         }
         .store(in: &cancellables)
     }
@@ -97,14 +97,16 @@ class GameScene: Scene {
         state.score = scoreMultiplier * score
     }
 
-    private func showFlyingEvent(_ event: Event) {
+    private func showFlyingTextEvent(_ event: Event) {
         if let fallEvent = event as? BarrelGenerator.FallEvent {
             let score = dataService.fallScore[fallEvent.barrelKind] ?? 0
-            FlyingEvent(
+            FlyingTextEvent(
                 string: "\(score > 0 ? "+" : "")\(score)",
                 color: score > 0 ? .systemGreen : .systemRed,
                 position: fallEvent.position
             ).addToScene(scene)
         }
+        
+        // more?
     }
 }

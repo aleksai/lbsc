@@ -16,7 +16,7 @@ class FloorZone: Component {
     init(_ kind: Kind, size: CGSize, position: SCNVector3) {
         super.init()
 
-        let zone = SCNPlane(width: size.width, height: size.height)
+        let zone = SCNPlane(width: size.width * 2, height: size.height * 2)
         zone.firstMaterial?.diffuse.contents = XXColor.zone[kind] ?? XXColor.white
         zone.firstMaterial?.transparency = 1.0
 
@@ -44,7 +44,7 @@ private extension FloorZone {
     func textForZoneWithSize(_ kind: Kind, size: CGSize) -> String {
         @Injected(\.dataService) var dataService
         let score = dataService.zoneScore[kind] ?? 0
-        let maxScore = Int(size.width) / 2 * Int(size.height) / 2 * score
+        let maxScore = Int(size.width) * Int(size.height) * score
         return "\(maxScore > 0 ? "+" : "")\(maxScore)"
     }
 }

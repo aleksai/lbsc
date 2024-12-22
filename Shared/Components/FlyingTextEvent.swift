@@ -1,6 +1,6 @@
 import SceneKit
 
-class FlyingEvent: Component {
+class FlyingTextEvent: Component {
     private var textNode: SCNNode!
 
     override var nodes: [SCNNode] {
@@ -30,13 +30,11 @@ class FlyingEvent: Component {
     override func addToScene(_ scene: SCNScene?) {
         super.addToScene(scene)
 
-        let moveUp = SCNAction.moveBy(x: 0, y: 3, z: 0, duration: 2.0)
-        let fadeOut = SCNAction.fadeOut(duration: 2.0)
+        let moveUpFadeOut = SCNAction.group([
+            SCNAction.moveBy(x: 0, y: 3, z: 0, duration: 2.0),
+            SCNAction.fadeOut(duration: 2.0)
+        ])
 
-        let groupAction = SCNAction.group([moveUp, fadeOut])
-        let removeAction = SCNAction.removeFromParentNode()
-        let sequence = SCNAction.sequence([groupAction, removeAction])
-
-        textNode.runAction(sequence)
+        textNode.runAction(SCNAction.sequence([moveUpFadeOut, SCNAction.removeFromParentNode()]))
     }
 }

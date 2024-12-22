@@ -19,7 +19,7 @@ class Floor: Component {
         floorNode = SCNNode(geometry: floor)
         floorNode.name = "Floor"
         floorNode.eulerAngles.x = -Float.pi / 2
-        floorNode.position = SCNVector3(x: 0, y: 0, z: 0)
+        floorNode.position = SCNVector3Zero
         floorNode.physicsBody = SCNPhysicsBody(type: .static, shape: nil)
     }
 }
