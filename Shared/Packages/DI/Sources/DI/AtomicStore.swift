@@ -6,7 +6,7 @@ final class AtomicStore<Key: Hashable, Value> {
     private let key = DispatchSpecificKey<Void>()
 
     init(identifier: String) {
-        accessQueue = DispatchQueue(label: "com.wiheads.paste.\(identifier)", qos: .userInteractive)
+        accessQueue = DispatchQueue(label: "com.lbsc.lbsc.\(identifier)", qos: .userInteractive)
         accessQueue.setSpecific(key: key, value: ())
     }
 

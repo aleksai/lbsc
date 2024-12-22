@@ -8,4 +8,8 @@ extension XXColor {
         .normal: .systemBlue,
         .zone: .systemGreen
     ]
+
+    static let zone: [FloorZone.Kind: XXColor] = [
+        .multiplier: .systemGreen
+    ]
 }

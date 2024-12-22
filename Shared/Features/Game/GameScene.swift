@@ -33,7 +33,8 @@ class GameScene: Scene {
         scene?.fogDensityExponent = 10.0
 
         floor.addToScene(scene)
-        FloorZone(text: "+1000", width: 6, height: 6, color: .systemGreen, position: SCNVector3Zero).addToScene(scene)
+
+        FloorZone(.multiplier, size: CGSize(width: 6, height: 6), position: SCNVector3Zero).addToScene(scene)
 
         barrelGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
         characterWithCamera.addToScene(scene)
