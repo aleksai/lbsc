@@ -106,7 +106,7 @@ class GameScene: Scene {
                 position: fallEvent.position
             ).addToScene(scene)
         }
-        
+
         // more?
     }
 }
