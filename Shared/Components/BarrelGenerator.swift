@@ -26,7 +26,7 @@ class BarrelGenerator {
                 fallEventSubject.send(FallEvent(position: barrelPosition, barrelKind: barrel.kind))
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) { barrel.removeAll() }
-                falledBarrels[barrel.kind, default: 0] += dataService.normalBarrelFallScore
+                falledBarrels[barrel.kind, default: 0] += 1
                 barrels.removeAll { $0 === barrel }
             }
         }
@@ -41,16 +41,21 @@ class BarrelGenerator {
 }
 
 private extension BarrelGenerator {
-    func generate(amount: Int = 20) -> [Barrel] {
+    func generate() -> [Barrel] {
         barrels.removeAll()
 
+        append(10, of: .normal)
+        append(10, of: .zone)
+
+        return barrels
+    }
+
+    func append(_ amount: Int, of kind: Barrel.Kind) {
         for _ in 0 ..< amount {
-            let barrel = Barrel(kind: .normal)
+            let barrel = Barrel(kind: kind)
             barrel.nodes.first?.position = randomPositionOnFloor()
             barrels.append(barrel)
         }
-
-        return barrels
     }
 
     func randomPositionOnFloor() -> SCNVector3 {

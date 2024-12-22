@@ -1,4 +1,5 @@
 import Combine
+import DI
 import SceneKit
 
 class GameSceneState: SceneState {
@@ -19,6 +20,8 @@ class GameScene: Scene {
 
     private var cancellables: Set<AnyCancellable> = []
 
+    @Injected(\.dataService) private var dataService
+
     override func setupScene() {
         super.setupScene()
 
@@ -30,6 +33,8 @@ class GameScene: Scene {
         scene?.fogDensityExponent = 10.0
 
         floor.addToScene(scene)
+        FloorZone(text: "+1000", width: 6, height: 6, color: .systemGreen, position: SCNVector3Zero).addToScene(scene)
+
         barrelGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
         characterWithCamera.addToScene(scene)
     }
@@ -59,7 +64,8 @@ class GameScene: Scene {
 
         barrelGenerator.onBarrelFalling.sink { [weak self] fallEvent in
             self?.showFlyingEvent(fallEvent)
-        }.store(in: &cancellables)
+        }
+        .store(in: &cancellables)
     }
 
     override func setupGestureRecognizers() {
@@ -82,15 +88,22 @@ class GameScene: Scene {
 
     private func estimateScore(falledBarrels: [Barrel.Kind: Int], scoreMultiplier: Int) {
         guard let state = state as? GameSceneState else { return }
-        state.score = scoreMultiplier * falledBarrels.reduce(0) { $0 + $1.value }
+
+        var score = 0
+        for kind in Barrel.Kind.allCases {
+            score += (dataService.fallScore[kind] ?? 0) * (falledBarrels[kind] ?? 0)
+        }
+        state.score = scoreMultiplier * score
     }
 
     private func showFlyingEvent(_ event: Event) {
         if let fallEvent = event as? BarrelGenerator.FallEvent {
-            switch fallEvent.barrelKind {
-            case .normal:
-                FlyingEvent(string: "+100", color: .systemGreen, position: fallEvent.position).addToScene(scene)
-            }
+            let score = dataService.fallScore[fallEvent.barrelKind] ?? 0
+            FlyingEvent(
+                string: "\(score > 0 ? "+" : "")\(score)",
+                color: score > 0 ? .systemGreen : .systemRed,
+                position: fallEvent.position
+            ).addToScene(scene)
         }
     }
 }

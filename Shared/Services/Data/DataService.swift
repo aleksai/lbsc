@@ -8,5 +8,8 @@ public struct DataService {
 
     let fallY: Float = -0.3
 
-    let normalBarrelFallScore = 100
+    let fallScore: [Barrel.Kind: Int] = [
+        .normal: 100,
+        .zone: -100
+    ]
 }

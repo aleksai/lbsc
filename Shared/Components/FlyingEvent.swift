@@ -1,25 +1,30 @@
 import SceneKit
 
 class FlyingEvent: Component {
-    private var eventNode: SCNNode!
+    private var textNode: SCNNode!
 
     override var nodes: [SCNNode] {
-        [eventNode]
+        [textNode]
     }
 
     init(string: String, color: XXColor, position: SCNVector3) {
         super.init()
 
-        let event = SCNText(string: string, extrusionDepth: 0)
-        event.font = .systemFont(ofSize: 1, weight: .heavy)
+        let text = SCNText(string: string, extrusionDepth: 0)
+        text.font = UIFont(name: "Helvetica-Bold", size: 1)
+        text.flatness = 0.1
 
-        event.firstMaterial?.diffuse.contents = color
-        event.firstMaterial?.transparency = 1.0
+        text.firstMaterial?.diffuse.contents = color
+        text.firstMaterial?.transparency = 1.0
 
-        eventNode = SCNNode(geometry: event)
-        eventNode.name = "Event"
-        eventNode.eulerAngles.x = -Float.pi / 2
-        eventNode.position = position
+        textNode = SCNNode(geometry: text)
+        textNode.name = "EventText"
+        textNode.eulerAngles.x = -Float.pi / 2
+        textNode.position = position
+
+        let min = text.boundingBox.min
+        let max = text.boundingBox.max
+        textNode.pivot = SCNMatrix4MakeTranslation((min.x + max.x) / 2, (min.y + max.y) / 2, (min.z + max.z) / 2)
     }
 
     override func addToScene(_ scene: SCNScene?) {
@@ -32,6 +37,6 @@ class FlyingEvent: Component {
         let removeAction = SCNAction.removeFromParentNode()
         let sequence = SCNAction.sequence([groupAction, removeAction])
 
-        eventNode.runAction(sequence)
+        textNode.runAction(sequence)
     }
 }

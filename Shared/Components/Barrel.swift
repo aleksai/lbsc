@@ -2,8 +2,9 @@ import DI
 import SceneKit
 
 class Barrel: Component {
-    enum Kind {
+    enum Kind: CaseIterable {
         case normal
+        case zone
     }
 
     let kind: Kind
@@ -21,7 +22,7 @@ class Barrel: Component {
 
         let barrelGeometry = SCNCylinder(radius: 1, height: 3)
 
-        barrelGeometry.firstMaterial?.diffuse.contents = XXColor.barrel
+        barrelGeometry.firstMaterial?.diffuse.contents = XXColor.barrel[kind] ?? .black
         barrelGeometry.firstMaterial?.transparency = 1.0
 
         barrelNode = SCNNode(geometry: barrelGeometry)
