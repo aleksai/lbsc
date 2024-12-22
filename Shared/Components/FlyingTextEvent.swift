@@ -21,10 +21,7 @@ class FlyingTextEvent: Component {
         textNode.name = "EventText"
         textNode.eulerAngles.x = -Float.pi / 2
         textNode.position = position
-
-        let min = text.boundingBox.min
-        let max = text.boundingBox.max
-        textNode.pivot = SCNMatrix4MakeTranslation((min.x + max.x) / 2, (min.y + max.y) / 2, (min.z + max.z) / 2)
+        textNode.pivot = .pivot(for: text.boundingBox)
     }
 
     override func addToScene(_ scene: SCNScene?) {
