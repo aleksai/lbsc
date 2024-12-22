@@ -1,10 +1,12 @@
 import DI
 import SceneKit
 
-class FloorZone: Component {
+class Zone: Component {
     enum Kind: CaseIterable {
         case multiplier
     }
+
+    let kind: Kind
 
     private var zoneNode: SCNNode!
     private var textNode: SCNNode!
@@ -14,6 +16,8 @@ class FloorZone: Component {
     }
 
     init(_ kind: Kind, size: CGSize, position: SCNVector3) {
+        self.kind = kind
+
         super.init()
 
         let zone = SCNPlane(width: size.width * 2, height: size.height * 2)
@@ -38,7 +42,7 @@ class FloorZone: Component {
     }
 }
 
-private extension FloorZone {
+private extension Zone {
     func textForZoneWithSize(_ kind: Kind, size: CGSize) -> String {
         @Injected(\.dataService) var dataService
         let score = dataService.zoneScore[kind] ?? 0

@@ -46,7 +46,7 @@ class Barrel: Component {
 
         barrelNode.addChildNode(checkmarkNode)
     }
-    
+
     func showCheckmark() {
         checkmarkNode.opacity = 1
     }

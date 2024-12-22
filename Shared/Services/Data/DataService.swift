@@ -13,7 +13,7 @@ public struct DataService {
         .zone: -100
     ]
 
-    let zoneScore: [FloorZone.Kind: Int] = [
+    let zoneScore: [Zone.Kind: Int] = [
         .multiplier: 200
     ]
 }

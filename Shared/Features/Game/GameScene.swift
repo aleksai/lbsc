@@ -17,6 +17,7 @@ class GameScene: Scene {
     private let characterWithCamera = CharacterWithCamera()
     private let floor = Floor()
     private let barrelGenerator = BarrelGenerator()
+    private let zoneGenerator = ZoneGenerator()
 
     private var cancellables: Set<AnyCancellable> = []
 
@@ -34,9 +35,9 @@ class GameScene: Scene {
 
         floor.addToScene(scene)
 
-        FloorZone(.multiplier, size: CGSize(width: 3, height: 3), position: SCNVector3Zero).addToScene(scene)
-
+        zoneGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
         barrelGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
+
         characterWithCamera.addToScene(scene)
     }
 
@@ -80,11 +81,13 @@ class GameScene: Scene {
 
         characterWithCamera.renderer(renderer, updateAtTime: time)
         barrelGenerator.renderer(renderer, updateAtTime: time)
+        zoneGenerator.renderer(renderer, updateAtTime: time)
     }
 
     private func reset() {
         characterWithCamera.reset()
         barrelGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
+        zoneGenerator.resetAndRegenerate().forEach { $0.addToScene(scene) }
     }
 
     private func estimateScore(falledBarrels: [Barrel.Kind: Int], scoreMultiplier: Int) {
@@ -106,7 +109,5 @@ class GameScene: Scene {
                 position: fallEvent.position
             ).addToScene(scene)
         }
-
-        // more?
     }
 }

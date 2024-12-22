@@ -9,7 +9,7 @@ extension XXColor {
         .zone: .systemGreen
     ]
 
-    static let zone: [FloorZone.Kind: XXColor] = [
+    static let zone: [Zone.Kind: XXColor] = [
         .multiplier: .systemGreen
     ]
 }

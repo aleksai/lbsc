@@ -16,6 +16,7 @@ class BarrelGenerator {
     }
 
     @Published public private(set) var falledBarrels: [Barrel.Kind: Int] = [:]
+    @Published public private(set) var zonedBarrels: [Zone.Kind: Int] = [:]
 
     @Injected(\.dataService) private var dataService
 
