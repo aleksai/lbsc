@@ -68,6 +68,14 @@ class GameScene: Scene {
             self?.showFlyingTextEvent(fallEvent)
         }
         .store(in: &cancellables)
+
+        zoneGenerator.onZoneComplete.sink { [weak self] zoneCompleteEvent in
+            let zone = zoneCompleteEvent.zone
+            zone.completeZone()
+
+            self?.floor.openShutters(position: Floor.Coords(x: Int(zone.position.x), y: Int(zone.position.z)), size: zone.size)
+        }
+        .store(in: &cancellables)
     }
 
     override func setupGestureRecognizers() {
@@ -85,8 +93,7 @@ class GameScene: Scene {
 
         for zone in zoneGenerator.zones {
             for barrel in barrelGenerator.barrels.filter({ $0.kind == .zone }) {
-                let stands = barrel.main.stands(on: zone.main)
-                barrel.showCheckmark(stands && zone.kind == .multiplier)
+                zone.checkBarrel(barrel)
             }
         }
     }

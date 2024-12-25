@@ -1,7 +1,7 @@
 import Foundation
 
 public struct DataService {
-    let floorSize: CGSize = .init(width: 40, height: 25)
+    let floorSize: CGSize = .init(width: 12, height: 12)
 
     let ballSpeed: Float = 1.0
     let cameraFollowSpeed: Float = 0.2

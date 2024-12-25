@@ -2,21 +2,37 @@ import DI
 import SceneKit
 
 class Zone: Component {
-    enum Kind: CaseIterable {
+    enum Kind {
         case multiplier
     }
 
+    let id: String = UUID().uuidString
     let kind: Kind
+    let position: SCNVector3
+    let size: CGSize
+    let required: Int
+
+    private var standingBarrels: [Barrel] = [] {
+        didSet {
+            complete = standingBarrels.count == required
+        }
+    }
 
     private var zoneNode: SCNNode!
     private var textNode: SCNNode!
 
     override var nodes: [SCNNode] {
-        [zoneNode, textNode]
+        [zoneNode]
     }
 
-    init(_ kind: Kind, size: CGSize, position: SCNVector3) {
+    @Published public private(set) var complete = false
+
+    init(_ kind: Kind, position: SCNVector3, size: CGSize) {
         self.kind = kind
+        self.position = position
+        self.size = size
+
+        required = Int(size.width * size.height)
 
         super.init()
 
@@ -35,10 +51,42 @@ class Zone: Component {
 
         textNode = SCNNode(geometry: text)
         textNode.name = "ZoneText"
-        textNode.eulerAngles.x = -Float.pi / 2
-        textNode.position = position
 
         textNode.pivot = .pivot(for: text.boundingBox)
+
+        zoneNode.addChildNode(textNode)
+    }
+
+    func checkBarrel(_ barrel: Barrel) {
+        let stands = barrel.main.stands(on: main)
+        let zoned = stands && kind == .multiplier
+
+        barrel.showCheckmark(zoned)
+
+        if zoned {
+            if !standingBarrels.contains(where: { $0.id == barrel.id }) {
+                standingBarrels.append(barrel)
+            }
+        } else {
+            if let index = standingBarrels.firstIndex(where: { $0.id == barrel.id }) {
+                standingBarrels.remove(at: index)
+            }
+        }
+    }
+
+    func completeZone() {
+        let fadeOut = SCNAction.fadeOut(duration: 1.0)
+        fadeOut.timingMode = .easeInEaseOut
+
+        let scaleDown = SCNAction.scale(to: 0.0, duration: 1.0)
+        scaleDown.timingMode = .easeInEaseOut
+
+        let group = SCNAction.group([fadeOut, scaleDown])
+
+        let removeNode = SCNAction.removeFromParentNode()
+        let sequence = SCNAction.sequence([group, removeNode])
+
+        zoneNode.runAction(sequence)
     }
 }
 

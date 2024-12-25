@@ -7,6 +7,7 @@ class Barrel: Component {
         case zone
     }
 
+    let id: String = UUID().uuidString
     let kind: Kind
 
     private var barrelNode: SCNNode!

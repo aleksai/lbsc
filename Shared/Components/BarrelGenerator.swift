@@ -16,7 +16,6 @@ class BarrelGenerator {
     }
 
     @Published public private(set) var falledBarrels: [Barrel.Kind: Int] = [:]
-    @Published public private(set) var zonedBarrels: [Zone.Kind: Int] = [:]
 
     @Injected(\.dataService) private var dataService
 
@@ -60,8 +59,16 @@ private extension BarrelGenerator {
     }
 
     func randomPositionOnFloor() -> SCNVector3 {
-        let randomX = CGFloat.random(in: -dataService.floorSize.width / 2 + 5 ... dataService.floorSize.width / 2 - 5)
-        let randomZ = CGFloat.random(in: -dataService.floorSize.height / 2 + 5 ... dataService.floorSize.height / 2 - 5)
+        let exclusionRadius: CGFloat = 5
+
+        var randomX: CGFloat
+        var randomZ: CGFloat
+
+        repeat {
+            randomX = CGFloat.random(in: -dataService.floorSize.width + 5 ... dataService.floorSize.width - 5)
+            randomZ = CGFloat.random(in: -dataService.floorSize.height + 5 ... dataService.floorSize.height - 5)
+        } while abs(randomX) < exclusionRadius && abs(randomZ) < exclusionRadius
+
         return SCNVector3(randomX, 2.5, randomZ)
     }
 }
